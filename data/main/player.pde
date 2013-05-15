@@ -29,13 +29,21 @@ class Player {
   void move() {
    
       if(up == true && yPos > 0){
-        yPos -= speed;}
+        translate (0,4);
+        yPos -= speed;  
+      }
       if(left == true && xPos > 0){
-        xPos -= speed;}
+        translate (4,0);  
+        xPos -= speed;
+      }        
       if(dn == true && yPos < height - size){
-        yPos += speed;}
+        translate (0,-4);
+        yPos += speed;
+      }
       if(right == true && xPos < width - size){
-        xPos += speed;}
+        translate (-4,0);
+        xPos += speed;
+      }
         
   }//end of move function
   

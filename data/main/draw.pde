@@ -2,6 +2,9 @@ void draw(){
   
   background(255);
   
+  player.move();
+  player.display();
+  
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
     Bullet bullet = (Bullet) bullets.get(i); //sets the ArrayList slots to the type Bullet
@@ -25,9 +28,6 @@ void draw(){
   }
   
   monsters[0].patrol(0,0,200,150);
-  
-  player.display();
-  player.move();
   
   playerLifebar.display();
   
