@@ -1,27 +1,21 @@
 class Lifebar {
   
-  float xPos;
-  float yPos;
-  float xLen;
-  float yLen;
   float health = 100;
   
-  Lifebar(float xPos_, float yPos_, float xLen_, float yLen_ ){
-    
-    xPos=xPos_;
-    yPos=yPos_;
-    xLen=xLen_;
-    yLen=yLen_;
+  Lifebar(){
     
   }
   
   void display(){
     
     stroke(0);
-    fill(0,200,0);
+    fill(256,0,0);
+    rectMode (CENTER);
+    rect (width/2,height-30,100,20);
     rectMode (CORNER);
-    rect(xPos,yPos,xLen*(100/health),yLen);
-    text (health,xPos,yPos);
+    fill (0,256,0);
+    rect((width/2)-50,height-40,health,20);
+    text (health,width-50,height-30);
     
   }//end display
   

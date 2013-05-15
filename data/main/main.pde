@@ -9,7 +9,7 @@ void setup(){
   bullets = new ArrayList(0);
   size(600,600);
   player = new Player(300,300,4);
-  playerLifebar = new Lifebar(200, 575, 200,25);
+  playerLifebar = new Lifebar();
   
   for (int i = 0; i < walls.length; i++){
     walls[i] = new Wall (200,200,240,210,#000000);
