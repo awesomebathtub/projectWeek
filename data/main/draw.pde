@@ -31,6 +31,13 @@ void draw(){
   
   playerLifebar.display();
   
+  //DISPLAY MONSTER LIFEBAR
+  
+  for (int i = 0; i < monsters.length; i++){
+  monsterLifebar[i].display();
+  }
+  
+  //DISPLAY WALLS
   for (int i = 0; i < walls.length; i++){
     
     walls[i].display();
