@@ -1,3 +1,8 @@
+import dff.minim.*;
+
+AudioPlayer player;
+minim minim;
+
 Player player;
 ArrayList bullets;
 Monster[] monsters = new Monster[10];
@@ -6,6 +11,9 @@ Lifebar playerLifebar;
 Lifebar[] monsterLifebar = new Lifebar[monsters.length];
 
 void setup(){
+  minim = new Minim(this);
+  player = minim.loadFile("opening_theme.mp3");
+  player.play();
   
   bullets = new ArrayList(0);
   size(600,600);
