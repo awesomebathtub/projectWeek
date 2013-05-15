@@ -85,7 +85,7 @@ class Monster
     
     for (int i = 0; i < walls.length; i++){
     
-      //BEGIN MONSTER HIT DETECT
+      //BEGIN MONSTER/WALL HIT DETECT
       if (yPos < walls[i].y2 && yPos > walls[i].y2-speed-1 && xPos < walls[i].x2 && xPos+size > walls[i].x1){
         yPos = walls[i].y2;
       }//end bottom edge
@@ -101,6 +101,30 @@ class Monster
       if (xPos+size > walls[i].x1 && xPos+size < walls[i].x1+speed+1 && yPos < walls[i].y2 && yPos + size > walls[i].y1){
         xPos = walls[i].x1 - size;
       }//end left edge
+      //END MONSTER/WALL HIT
+      
+      //BEGIN PLAYER/MONSTER HIT DETECT
+      if (player.yPos < yPos+size && player.yPos > yPos+size-player.speed-1 && player.xPos < xPos+size && player.xPos+player.size > xPos){
+        player.yPos += speed*20;
+        playerLifebar.health -= 10; 
+      }//end bottom edge
+      
+      if (player.yPos+player.size > yPos && player.yPos+player.size < yPos+player.speed+1 && player.xPos < xPos+size && player.xPos + player.size > xPos){
+        player.yPos -= speed*20;
+        playerLifebar.health -= 10;
+      }//end top edge
+      
+      if (player.xPos < xPos+size && player.xPos > xPos+size-player.speed-1 && player.yPos < yPos+size && player.yPos+player.size > yPos){
+        player.xPos += speed*20;
+        playerLifebar.health -= 10;
+      }//end right edge
+      
+      if (player.xPos+player.size > xPos && player.xPos+player.size < xPos+player.speed+1 && player.yPos < yPos+size && player.yPos + player.size > yPos){
+        player.xPos -= speed*20;
+        playerLifebar.health -= 10;
+      }//end left edge
+      //END PLAYER/MONSTER HIT
+      
       
     }//end for loop
     

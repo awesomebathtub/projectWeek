@@ -4,6 +4,7 @@ class Lifebar {
   float yPos;
   float xLen;
   float yLen;
+  float health = 100;
   
   Lifebar(float xPos_, float yPos_, float xLen_, float yLen_ ){
     
@@ -18,7 +19,9 @@ class Lifebar {
     
     stroke(0);
     fill(0,200,0);
-    rect(xPos,yPos,xLen,yLen);
+    rectMode (CORNER);
+    rect(xPos,yPos,xLen*(100/health),yLen);
+    text (health,xPos,yPos);
     
   }//end display
   
