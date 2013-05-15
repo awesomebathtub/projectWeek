@@ -104,7 +104,7 @@ class Monster
       
     }//end for loop
     
-  }//end hit
-
+  }
+  
 }//end monsterOne class
 
