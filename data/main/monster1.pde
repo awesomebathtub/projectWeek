@@ -30,7 +30,7 @@ class Monster
     
   }//end display
   
-  void patrol(float pX, float pY, float pW, float pH) {
+  void patrol(float pX, float pY, float pW, float pH) {//a patrol function. inputs are x,y,width,height
         
     if (sighted == false){ 
       

@@ -12,9 +12,9 @@ class Bullet {
     xPos = xPos_;
     yPos = yPos_;
     speed = speed_;
-    ang = atan2((mouseY-player.yPos),(mouseX-player.xPos));
-    xSpeed = cos(ang)*speed;
-    ySpeed = sin(ang)*speed;
+    ang = atan2((mouseY-player.yPos),(mouseX-player.xPos));//sets the angle of the bullet's path
+    xSpeed = cos(ang)*speed;//sets xSpeed based on angle to cursor
+    ySpeed = sin(ang)*speed;//sets ySpeed based on angle to cursor
     
   }//end of constructor
   
