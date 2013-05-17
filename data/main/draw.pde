@@ -34,7 +34,14 @@ void draw(){
   //DISPLAY MONSTER LIFEBAR
   
   for (int i = 0; i < monsters.length; i++){
-  monsterLifebar[i].display();
+    
+    monsterLifebar[i].display();    
+    monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
+    monsterLifebar[i].yPos1 = monsters[i].yPos - 15;
+    monsterLifebar[i].xPos2 = monsters[i].xPos + 42;
+    monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
+    
+  
   }
   
   //DISPLAY WALLS
