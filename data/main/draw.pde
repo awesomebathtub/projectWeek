@@ -34,7 +34,7 @@ void draw(){
   }
   
   playerLifebar.display();
-  
+  playerLevel.display();
   playerXP.display();
   
   //DISPLAY MONSTER LIFEBAR

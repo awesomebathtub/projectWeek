@@ -15,6 +15,7 @@ Lifebar playerLifebar;
 Lifebar[] monsterLifebar = new Lifebar[monsters.length];
 
 Expbar playerXP;
+Level playerLevel;
 
 void setup(){
   minim = new Minim(this);
@@ -29,6 +30,7 @@ void setup(){
   playerLifebar = new Lifebar((width/2)-50,height-30,(width/2)+50,(height-40));
   
   playerXP = new Expbar((width/2)-50,height-20,(width/2)-50,(height-10));
+  playerLevel = new Level(1);
   
   for (int i = 0; i < walls.length; i++){
     walls[i] = new Wall (200,200,240,210,#000000);
