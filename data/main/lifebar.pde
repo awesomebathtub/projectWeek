@@ -18,6 +18,7 @@ class Lifebar {
     fill(255,0,0);
     rectMode (CORNERS);
     rect (xPos1,yPos1,xPos2,yPos2);
+    
     //GREEN SECTION OF HEALTH BAR
     fill (0,255,0);
     rect (xPos1,yPos1,xPos1+health,yPos2);
