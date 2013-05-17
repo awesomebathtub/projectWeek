@@ -1,8 +1,8 @@
 class Level {
   
-  float level;
+  int level;
   
-  Level(float level_){
+  Level(int level_){
     level=level_;
   }
   
