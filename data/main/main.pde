@@ -18,6 +18,7 @@ Expbar playerXP;
 Level playerLevel;
 
 void setup(){
+  frameRate(30);
   minim = new Minim(this);
   bulletMinim = new Minim(this);
   
@@ -26,7 +27,7 @@ void setup(){
   
   bullets = new ArrayList(0);
   size(600,600);
-  player = new Player(300,300,4);
+  player = new Player(300,300,4,30);
   playerLifebar = new Lifebar((width/2)-50,height-30,(width/2)+50,(height-40));
   
   playerXP = new Expbar((width/2)-50,height-20,(width/2)-50,(height-10));

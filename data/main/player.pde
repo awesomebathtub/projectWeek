@@ -9,12 +9,13 @@ class Player {
   float yPos;
   float speed;
   float size = 16;
-  
-  Player(float xPos_, float yPos_, float speed_) {
+  int ammo;
+  Player(float xPos_, float yPos_, float speed_, int ammo_) {
     
     xPos = xPos_;
     yPos = yPos_;
     speed = speed_;
+    ammo = ammo_;
     
   }//end of constructor
   
@@ -29,19 +30,19 @@ class Player {
   void move() {
    
       if(up == true && yPos > 0){
-        translate (0,4);
+        //translate (0,4);
         yPos -= speed;  
       }
       if(left == true && xPos > 0){
-        translate (4,0);  
+        //translate (4,0);  
         xPos -= speed;
       }        
       if(dn == true && yPos < height - size){
-        translate (0,-4);
+        //translate (0,-4);
         yPos += speed;
       }
       if(right == true && xPos < width - size){
-        translate (-4,0);
+        //translate (-4,0);
         xPos += speed;
       }
       
