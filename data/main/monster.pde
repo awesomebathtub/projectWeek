@@ -8,6 +8,7 @@ class Monster
   float size;
   float ang;
   boolean sighted = false;
+  boolean living = true;
   
   //inputs are monster speed, patrol box x, patrol box y, patrol box width, patrol box height, monster size
   Monster(float speed_, float size_) {
@@ -127,6 +128,12 @@ class Monster
       
       
     }//end for loop
+    
+  }
+  
+  void death (int i){
+    
+    monsters[i] = null;
     
   }
   

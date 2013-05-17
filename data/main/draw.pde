@@ -22,12 +22,16 @@ void draw(){
   
   for (int i = 0; i < monsters.length; i++){
     
-    monsters[i].display();
-    monsters[i].hit();
+    if (monsters[i].living == true){
+      monsters[i].display();
+      monsters[i].hit();
+    }
     
   }
   
-  monsters[0].patrol(0,0,200,150);
+  if (monsters[0].living == true){
+    monsters[0].patrol(0,0,200,150);
+  }
   
   playerLifebar.display();
   
@@ -35,14 +39,29 @@ void draw(){
   
   for (int i = 0; i < monsters.length; i++){
     
-    monsterLifebar[i].display();    
-    monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
-    monsterLifebar[i].yPos1 = monsters[i].yPos - 15;
-    monsterLifebar[i].xPos2 = monsters[i].xPos + 42;
-    monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
+    if (monsters[i].living == true){
+      
+      monsterLifebar[i].display();    
+      monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
+      monsterLifebar[i].yPos1 = monsters[i].yPos - 15;
+      monsterLifebar[i].xPos2 = monsters[i].xPos + 42;
+      monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
     
+    }
   
   }
+  
+  //monster death
+  for (int i = 0; i < monsters.length; i++){
+      
+    if (monsterLifebar[i].health == 0){
+        
+      monsters[i].death(i);
+        
+    }
+      
+  }
+  
   
   //DISPLAY WALLS
   for (int i = 0; i < walls.length; i++){

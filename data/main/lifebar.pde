@@ -23,7 +23,7 @@ class Lifebar {
     fill (0,255,0);
     rect (xPos1,yPos1,xPos1+health,yPos2);
     //text (health,width-50,height-30);
-    
+        
   }//end display
   
 }//end lifebar
