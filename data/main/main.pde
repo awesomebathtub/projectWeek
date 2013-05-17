@@ -8,6 +8,7 @@ AudioPlayer bulletSound;
 Player player;
 ArrayList bullets;
 Monster[] monsters = new Monster[10];
+Monster temp;
 Wall[] walls = new Wall[10];
 
 Lifebar playerLifebar;
@@ -39,6 +40,8 @@ void setup(){
   for(int i = 0; i < monsters.length; i++){
     monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].xPos+42, monsters[i].yPos-5);
   }
+  
+  temp = new Monster (3, 32);
   
 }//end of setup
 

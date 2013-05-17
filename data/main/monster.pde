@@ -133,8 +133,10 @@ class Monster
   
   void death (int i){
     
-    monsters[i] = null;
-    
+    living = false;
+    monsters[i] = monsters[monsters.length-1];
+    shorten(monsters);
+        
   }
   
 }//end monsterOne class
