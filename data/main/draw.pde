@@ -31,6 +31,8 @@ void draw(){
   
   playerLifebar.display();
   
+  playerXP.display();
+  
   //DISPLAY MONSTER LIFEBAR
   
   for (int i = 0; i < monsters.length; i++){
