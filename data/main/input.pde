@@ -31,7 +31,8 @@ void keyReleased () {
   if (key == ' '){
     
     bullets.add (new Bullet (player.xPos, player.yPos, 5));
-   
+    bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
+    bulletSound.play();
   }//end if
   
 }//end of keyReleased

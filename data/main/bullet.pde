@@ -29,7 +29,6 @@ class Bullet {
     
     xPos += xSpeed;
     yPos += ySpeed;
-    
   }//end shoot
   
 }//end of bullet class

@@ -1,19 +1,29 @@
 import ddf.minim.*;
 
 Minim minim;
-AudioPlayer audioPlayer;
+Minim bulletMinim;
+
+AudioPlayer music;
+AudioPlayer bulletSound;
 
 Player player;
+
 ArrayList bullets;
+
 Monster[] monsters = new Monster[10];
+
 Wall[] walls = new Wall[10];
+
 Lifebar playerLifebar;
+
 Lifebar[] monsterLifebar = new Lifebar[monsters.length];
 
 void setup(){
   minim = new Minim(this);
-  audioPlayer = minim.loadFile("opening_theme.mp3");
-  audioPlayer.play();
+  bulletMinim = new Minim(this);
+  
+  music = minim.loadFile("opening_theme.mp3");
+  music.play();
   
   bullets = new ArrayList(0);
   size(600,600);
