@@ -34,12 +34,9 @@ class Bullet {
       if(xPos <= monsters[i].xPos+monsters[i].size && xPos >= monsters[i].xPos && 
         yPos <= monsters[i].yPos+monsters[i].size && monsters[i].yPos >= monsters[i].yPos ){
           monsterLifebar[i].health -= 10;
+          monsters[i].sighted = true;
       }//end if
     }//end for
-    
   }//end shoot
-  
-  
-  
 }//end of bullet class
          
