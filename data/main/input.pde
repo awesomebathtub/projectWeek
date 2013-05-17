@@ -1,7 +1,5 @@
 void keyTyped (){
-  
-  
-  
+ 
 }//end keyTyped
 
 void keyPressed () {
