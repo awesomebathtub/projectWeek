@@ -1,4 +1,5 @@
 import ddf.minim.*;
+PImage loadScreen;
 
 Minim minim;
 Minim bulletMinim;
@@ -20,6 +21,7 @@ Level playerLevel;
 boolean gameRunning = false;
 
 void setup(){
+  loadScreen = loadImage("loadScreen.jpg");
   frameRate(60);
   minim = new Minim(this);
   bulletMinim = new Minim(this);

@@ -30,7 +30,7 @@ void keyReleased () {
 
 void mouseReleased (){
   
-  bullets.add (new Bullet (player.xPos, player.yPos, 5));
+  bullets.add (new Bullet (player.xPos, player.yPos, 20));
   bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
   bulletSound.play();
   

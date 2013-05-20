@@ -2,6 +2,7 @@ void draw(){
   //OPENING SCREEN CODE BEGINS HERE**********************************************
   if(gameRunning == false){
     background(0);
+    image(loadScreen, 0, 0);
     music.play();
     textSize(30);
     textAlign(CENTER,CENTER);
