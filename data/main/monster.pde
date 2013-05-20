@@ -133,6 +133,11 @@ class Monster
   
   void death (int i){
     
+    if (living == true){
+      
+      playerXP.XP +=100;
+      
+    }
     living = false;
     monsters[i] = monsters[monsters.length-1];
     shorten(monsters);

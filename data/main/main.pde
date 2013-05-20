@@ -18,7 +18,7 @@ Expbar playerXP;
 Level playerLevel;
 
 void setup(){
-  frameRate(30);
+  frameRate(60);
   minim = new Minim(this);
   bulletMinim = new Minim(this);
   

@@ -59,7 +59,6 @@ void draw(){
     if (monsterLifebar[i].health <= 0){
         
       monsters[i].death(i);
-      playerXP.XP +=100;
         
     }
       
