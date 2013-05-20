@@ -25,12 +25,13 @@ void keyReleased () {
     dn = false;}
   if(key == 'd'){
     right = false;}
-    
-  if (key == ' '){
-    
-    bullets.add (new Bullet (player.xPos, player.yPos, 5));
-    bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
-    bulletSound.play();
-  }//end if
-  
+      
 }//end of keyReleased
+
+void mouseReleased (){
+  
+  bullets.add (new Bullet (player.xPos, player.yPos, 5));
+  bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
+  bulletSound.play();
+  
+}//end mouseReleased
