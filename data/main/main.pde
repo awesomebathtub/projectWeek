@@ -17,13 +17,14 @@ Lifebar[] monsterLifebar = new Lifebar[monsters.length];
 Expbar playerXP;
 Level playerLevel;
 
+boolean gameRunning = false;
+
 void setup(){
   frameRate(60);
   minim = new Minim(this);
   bulletMinim = new Minim(this);
   
   music = minim.loadFile("opening_theme.mp3");
-  music.play();
   
   bullets = new ArrayList(0);
   size(600,600);

@@ -1,5 +1,22 @@
 void draw(){
+  //OPENING SCREEN CODE BEGINS HERE**********************************************
+  if(gameRunning == false){
+    background(0);
+    music.play();
+    textSize(30);
+    textAlign(CENTER,CENTER);
+    text("SPACE-SHOOTER", width/2,height/4);
+    text("DUNGEON-CRAWLER", width/2, (height/4)+30);
+    text("MONSTER-KILLER GAME", width/2, (height/4)+60);
+    text("CLICK TO PLAY", width/2, (height/2));
+      if(mousePressed && (mouseButton == LEFT)){
+        gameRunning = true;
+      }//end of if mousePressed
+  }//end gameRunning == false
+  //OPENING SCREEN CODE ENDS HERE**************************************************
   
+  //GAME SCREEN CODE BEGINS HERE**************************************************
+  if(gameRunning == true){
   background(255);
   
   player.move();
@@ -76,4 +93,6 @@ void draw(){
     playerXP.XP = 0;
     playerLevel.level = playerLevel.level + 1;
   }
+  }//end gameRunning == true
+  //GAME SCREEN CODE ENDS HERE*******************************************************
 }
