@@ -11,6 +11,8 @@ void draw(){
     text("CLICK TO PLAY", width/2, (height/2));
       if(mousePressed && (mouseButton == LEFT)){
         gameRunning = true;
+        music.close();
+        minim.stop();
       }//end of if mousePressed
   }//end gameRunning == false
   //OPENING SCREEN CODE ENDS HERE**************************************************
