@@ -10,6 +10,9 @@ class Player {
   float speed;
   float size = 16;
   int ammo;
+  int countX;
+  int countY;
+  
   Player(float xPos_, float yPos_, float speed_, int ammo_) {
     
     xPos = xPos_;
@@ -30,19 +33,19 @@ class Player {
   void move() {
    
       if(up == true && yPos > 0){
-        //translate (0,4);
+        countY += speed;
         yPos -= speed;  
       }
       if(left == true && xPos > 0){
-        //translate (4,0);  
+        countX += speed; 
         xPos -= speed;
       }        
       if(dn == true && yPos < height - size){
-        //translate (0,-4);
+        countY -= speed;
         yPos += speed;
       }
       if(right == true && xPos < width - size){
-        //translate (-4,0);
+        countX -= speed;
         xPos += speed;
       }
       
@@ -59,6 +62,8 @@ class Player {
       if (yPos < 0){
         yPos = 0;
       }
+      
+      translate (countX, countY);
         
   }//end of move function
   

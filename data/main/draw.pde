@@ -20,7 +20,7 @@ void draw(){
   //GAME SCREEN CODE BEGINS HERE**************************************************
   if(gameRunning == true){
   background(255);
-  
+    
   player.move();
   player.display();
   
