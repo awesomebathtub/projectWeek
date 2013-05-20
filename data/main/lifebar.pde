@@ -1,15 +1,19 @@
 class Lifebar {
   
-  float health = 100;
+  float health;
   float xPos1;
   float yPos1;
-  float xPos2;
   float yPos2;
-  Lifebar(float xPos1_, float yPos1_, float xPos2_, float yPos2_){
+  float maxHP;
+  
+  Lifebar(float xPos1_, float yPos1_, float yPos2_, float health_){
+    
     xPos1 = xPos1_;
     yPos1 = yPos1_;
-    xPos2 = xPos2_;
     yPos2 = yPos2_;
+    health = health_;
+    maxHP = health_;
+    
   }
   
   void display(){
@@ -17,7 +21,7 @@ class Lifebar {
     stroke(0);
     fill(255,0,0);
     rectMode (CORNERS);
-    rect (xPos1,yPos1,xPos2,yPos2);
+    rect (xPos1,yPos1,xPos1+maxHP,yPos2);
     
     //GREEN SECTION OF HEALTH BAR
     fill (0,255,0);

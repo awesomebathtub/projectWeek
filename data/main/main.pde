@@ -29,7 +29,7 @@ void setup(){
   bullets = new ArrayList(0);
   size(600,600);
   player = new Player(300,300,4,30);
-  playerLifebar = new Lifebar((width/2)-50,height-30,(width/2)+50,(height-40));
+  playerLifebar = new Lifebar((width/2)-50,height-30,(height-40),100);
   
   playerXP = new Expbar((width/2)-50,height-20,(width/2)-50,(height-10));
   playerLevel = new Level(1);
@@ -42,7 +42,7 @@ void setup(){
     monsters[i] = new Monster (3, 32);    
   }
   for(int i = 0; i < monsters.length; i++){
-    monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].xPos+42, monsters[i].yPos-5);
+    monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].yPos-5, 75);
   }
   
   temp = new Monster (3, 32);
