@@ -42,7 +42,7 @@ void draw(){
     
   player.move();
   player.display();
-
+  playerLifebar.display();
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
@@ -72,7 +72,6 @@ void draw(){
     monsters[0].patrol(0,0,200,150);
   }
   
-  playerLifebar.display();
   playerLevel.display();
   playerXP.display();
   
@@ -102,8 +101,8 @@ void draw(){
       
   }
   //TESTING PLAYER POSITION
-  text(player.xPos,300,300);
-  text(player.yPos,300,320);
+  //text(player.xPos,300,300);
+  //text(player.yPos,300,320);
   
   //DISPLAY WALLS
   for (int i = 0; i < walls.length; i++){

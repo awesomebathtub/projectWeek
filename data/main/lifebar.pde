@@ -23,11 +23,11 @@ class Lifebar {
     stroke(0);
     fill(255,0,0);
     rectMode (CORNERS);
-    rect (xPos1,yPos1,xPos1+maxHP,yPos2);
+    rect(xPos1,yPos1,xPos1+maxHP,yPos2);
     
     //GREEN SECTION OF HEALTH BAR
-    fill (0,255,0);
-    rect (xPos1,yPos1,xPos1+health,yPos2);
+    fill(0,255,0);
+    rect(xPos1,yPos1,xPos1+health,yPos2);
     //text (health,width-50,height-30);
         
   }//end display

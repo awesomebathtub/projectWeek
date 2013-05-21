@@ -35,7 +35,7 @@ void setup(){
   playerLifebar = new Lifebar(player.xPos-10, player.yPos-18, player.xPos+10, player.yPos-15, 10,10);
   playerXP = new Expbar();
   playerLevel = new Level(1);
-  
+    
   for (int i = 0; i < walls.length; i++){
     walls[i] = new Wall (200+(i*40),200,240,210,#000000);
   }
@@ -43,13 +43,12 @@ void setup(){
   for (int i = 0; i < 10; i++){    
     monsters[i] = new Monster (3, 32);    
   }
-  for(int i = 0; i < monsters.length; i++){
+  for (int i = 0; i < monsters.length; i++){
     monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].xPos+10, monsters[i].yPos-5,75,75);
   }
   
   temp = new Monster (3, 32);
   
-}//end of setup
-//jk
+}//end of se/jk
 
 
