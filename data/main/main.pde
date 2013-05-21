@@ -46,7 +46,7 @@ void setup(){
   
   //setup walls
   for (int i = 0; i < walls.length; i++){
-    walls[i] = new Wall (200+(i*40),200,240,210,#000000);
+    walls[i] = new Wall (200,200,240,210,#000000);
   }
   
   //setup monsters
@@ -60,6 +60,6 @@ void setup(){
   
   temp = new Monster (3, 32);
   
-}//end of se/jk
+}//end of setup
 
 

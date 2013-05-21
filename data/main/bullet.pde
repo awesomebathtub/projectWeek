@@ -6,11 +6,12 @@ class Bullet {
   float xSpeed;
   float ySpeed;
   float ang;
+  boolean hit;
   
-  Bullet(float xPos_, float yPos_, float speed_) {
+  Bullet(float speed_) {
     
-    xPos = xPos_;
-    yPos = yPos_;
+    xPos = player.xPos;
+    yPos = player.yPos;
     speed = speed_;
     ang = atan2((mouseY-player.yPos),(mouseX-player.xPos));//sets the angle of the bullet's path
     xSpeed = cos(ang)*speed;//sets xSpeed based on angle to cursor
@@ -29,15 +30,21 @@ class Bullet {
     
     xPos += xSpeed;
     yPos += ySpeed;
+    
     //BEGIN BULLET/MONSTER HIT DETECTION
     for(int i = 0; i < monsters.length; i++){
       
-      if(xPos <= monsters[i].xPos+monsters[i].size && xPos >= monsters[i].xPos && 
-        yPos <= monsters[i].yPos+monsters[i].size && monsters[i].yPos >= monsters[i].yPos ){
+      if(xPos <= monsters[i].xPos+monsters[i].size && xPos >= monsters[i].xPos && yPos <= monsters[i].yPos+monsters[i].size && monsters[i].yPos >= monsters[i].yPos ){
+        
           monsterLifebar[i].health -= 10;
           monsters[i].sighted = true;
+          hit = true;
+          
       }//end if
+      
     }//end for
+    
   }//end shoot
+  
 }//end of bullet class
          

@@ -1,4 +1,5 @@
 void draw(){
+
   //OPENING SCREEN CODE BEGINS HERE**********************************************
   if(gameState == 0){
     background(0);
@@ -40,9 +41,14 @@ void draw(){
     rotate(0.5);
     text("Created by Alec Ray and Julian Bloch", width/2,550);
     
+<<<<<<< HEAD
     
       if(keyPressed && (key == ' ')){
         gameState = 1;
+=======
+      if(mousePressed && (mouseButton == LEFT)){
+        gameRunning = true;
+>>>>>>> f6afec0e7c32b1e25c9db7ac2c8a386e377bdc71
         music.close();
         minim.stop();
       }//end of if mousePressed
@@ -62,6 +68,7 @@ void draw(){
   if(gameState == 2){
   background(255);
     
+<<<<<<< HEAD
   player.move();
   player.display();
   
@@ -72,21 +79,41 @@ void draw(){
   //END REFRESH PLAYER HP BAR
   
   playerLifebar.display();
+=======
+  //sets up a temp variable to measure change in player.xPos and .yPos
+  player.tempX = player.xPos;
+  player.tempY = player.yPos;
+        
+  //translates screen based on change in player.xPos and .yPos
+  translate (player.countX, player.countY);
+>>>>>>> f6afec0e7c32b1e25c9db7ac2c8a386e377bdc71
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
-    Bullet bullet = (Bullet) bullets.get(i); //sets the ArrayList slots to the type Bullet
+    Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
     
     bullet.display();
     bullet.shoot();
     
-    if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height){//removes bullets when they leave the screen
+    if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height || bullet.hit == true){//removes bullets when they leave the screen
       
       bullets.remove(i);
       
     }//end if
   
   }//end list constructor
+    
+  player.move();
+  player.display();
+  
+  //BEGIN REFRESH PLAYER HP BAR
+  playerLifebar.xPos1 = player.xPos-50;
+  playerLifebar.yPos1 = player.yPos+250; 
+  playerLifebar.xPos1 = player.xPos+50;
+  playerLifebar.yPos2 = player.yPos+255;
+  //END REFRESH PLAYER HP BAR
+  
+  playerLifebar.display();
   
   for (int i = 0; i < monsters.length; i++){
     
@@ -148,6 +175,11 @@ void draw(){
     playerLevel.level = playerLevel.level + 1;
   //END LEVEL UP CODE
   }
+  
+  //calculates change between player.xPos and .yPos
+  player.countX -= (player.xPos - player.tempX);
+  player.countY -= (player.yPos - player.tempY);
+  
   }//end gameRunning == true
   //GAME SCREEN CODE ENDS HERE*******************************************************
 }

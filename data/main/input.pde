@@ -4,33 +4,33 @@ void keyTyped (){
 
 void keyPressed () {
   
-  if(key == 'w'){
+  if(key == 'w' || key == 'W'){
     up = true;}
-  if(key == 'a'){
+  if(key == 'a' || key == 'A'){
     left = true;}
-  if(key == 's'){
+  if(key == 's' || key == 'S'){
     dn = true;}
-  if(key == 'd'){
+  if(key == 'd' || key == 'D'){
     right = true;}
     
 }//end of keyPressed
 
 void keyReleased () {
   
-  if(key == 'w'){
+  if(key == 'w' || key == 'W'){
     up = false;}
-  if(key == 'a'){
+  if(key == 'a' || key == 'A'){
     left = false;}
-  if(key == 's'){
+  if(key == 's' || key == 'S'){
     dn = false;}
-  if(key == 'd'){
+  if(key == 'd' || key == 'D'){
     right = false;}
       
 }//end of keyReleased
 
 void mouseReleased (){
   
-  bullets.add (new Bullet (player.xPos, player.yPos, 20));
+  bullets.add (new Bullet (10));
   bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
   bulletSound.play();
   
