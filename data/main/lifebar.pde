@@ -3,7 +3,6 @@ class Lifebar {
   float health;
   float xPos1;
   float yPos1;
-  float xPos2;
   float yPos2;
   float maxHP;
   
@@ -11,7 +10,6 @@ class Lifebar {
     
     xPos1 = xPos1_;
     yPos1 = yPos1_;
-    xPos2 = xPos2_;
     yPos2 = yPos2_;
     health = health_;
     maxHP = maxHP_;

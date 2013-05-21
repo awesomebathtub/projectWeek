@@ -55,6 +55,14 @@ void draw(){
     
   player.move();
   player.display();
+  
+  //BEGIN REFRESH PLAYER HP BAR
+  playerLifebar.xPos1 = player.xPos-50;
+  playerLifebar.yPos1 = player.yPos+250; 
+  playerLifebar.xPos1 = player.xPos+50;
+  playerLifebar.yPos2 = player.yPos+255;
+  //END REFRESH PLAYER HP BAR
+  
   playerLifebar.display();
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets

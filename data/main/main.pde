@@ -32,7 +32,7 @@ void setup(){
   size(600,600);
   
   player = new Player(300,300,4,30);
-  playerLifebar = new Lifebar(player.xPos-10, player.yPos-18, player.xPos+10, player.yPos-15, 10,10);
+  playerLifebar = new Lifebar(player.xPos-50, player.yPos+250, player.xPos+50, player.yPos-250, 100,100);
   playerXP = new Expbar();
   playerLevel = new Level(1);
     
