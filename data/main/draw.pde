@@ -4,12 +4,30 @@ void draw(){
     background(0);
     image(loadScreen, 0, 0);
     music.play();
+    
     textSize(30);
     textAlign(CENTER,CENTER);
-    text("SPACE-SHOOTER", width/2,height/4);
-    text("DUNGEON-CRAWLER", width/2, (height/4)+30);
-    text("MONSTER-KILLER GAME", width/2, (height/4)+60);
-    text("CLICK TO PLAY", width/2, (height/2));
+    
+    fill(0);
+    text("SPACE-SHOOTER", (width/2)-2,(height/6)-2);
+    fill(255);
+    text("SPACE-SHOOTER", width/2,height/6);
+    
+    fill(0);
+    text("DUNGEON-CRAWLER", (width/2)-2, (height/6)+28);
+    fill(255);
+    text("DUNGEON-CRAWLER", width/2, (height/6)+30);
+    
+    fill(0);
+    text("MONSTER-KILLER GAME", (width/2)-2, (height/6)+58);
+    fill(255);
+    text("MONSTER-KILLER GAME", width/2, (height/6)+60);
+    
+    fill(0);
+    text("CLICK TO PLAY", (width/2)-2, (height/2)-2);
+    fill(255);
+    text("CLICK TO PLAY", width/2, height/2);
+    
       if(mousePressed && (mouseButton == LEFT)){
         gameRunning = true;
         music.close();
