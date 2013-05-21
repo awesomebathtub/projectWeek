@@ -53,19 +53,21 @@ void draw(){
   if(gameRunning == true){
   background(255);
     
+  //sets up a temp variable to measure change in player.xPos and .yPos
   player.tempX = player.xPos;
   player.tempY = player.yPos;
         
+  //translates screen based on change in player.xPos and .yPos
   translate (player.countX, player.countY);
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
-    Bullet bullet = (Bullet) bullets.get(i); //sets the ArrayList slots to the type Bullet
+    Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
     
     bullet.display();
     bullet.shoot();
     
-    if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height){//removes bullets when they leave the screen
+    if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height || bullet.hit == true){//removes bullets when they leave the screen
       
       bullets.remove(i);
       
@@ -142,6 +144,7 @@ void draw(){
     playerLevel.level = playerLevel.level + 1;
   }
   
+  //calculates change between player.xPos and .yPos
   player.countX -= (player.xPos - player.tempX);
   player.countY -= (player.yPos - player.tempY);
   

@@ -6,6 +6,7 @@ class Bullet {
   float xSpeed;
   float ySpeed;
   float ang;
+  boolean hit;
   
   Bullet(float speed_) {
     
@@ -29,15 +30,21 @@ class Bullet {
     
     xPos += xSpeed;
     yPos += ySpeed;
+    
     //BEGIN BULLET/MONSTER HIT DETECTION
     for(int i = 0; i < monsters.length; i++){
       
-      if(xPos <= monsters[i].xPos+monsters[i].size && xPos >= monsters[i].xPos && 
-        yPos <= monsters[i].yPos+monsters[i].size && monsters[i].yPos >= monsters[i].yPos ){
+      if(xPos <= monsters[i].xPos+monsters[i].size && xPos >= monsters[i].xPos && yPos <= monsters[i].yPos+monsters[i].size && monsters[i].yPos >= monsters[i].yPos ){
+        
           monsterLifebar[i].health -= 10;
           monsters[i].sighted = true;
+          hit = true;
+          
       }//end if
+      
     }//end for
+    
   }//end shoot
+  
 }//end of bullet class
          
