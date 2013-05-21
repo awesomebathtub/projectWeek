@@ -46,7 +46,7 @@ void draw(){
         music.close();
         minim.stop();
       }//end of if mousePressed
-  }//end gameRunning == false
+  }//end gameState == 0
   //OPENING SCREEN CODE ENDS HERE**************************************************
   
   //GAME SCREEN CODE BEGINS HERE**************************************************
@@ -148,6 +148,6 @@ void draw(){
   player.countX -= (player.xPos - player.tempX);
   player.countY -= (player.yPos - player.tempY);
   
-  }//end gameRunning == true
+  }//end gameState == 1
   //GAME SCREEN CODE ENDS HERE*******************************************************
 }
