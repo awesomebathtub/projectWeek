@@ -1,7 +1,7 @@
 void draw(){
 
   //OPENING SCREEN CODE BEGINS HERE**********************************************
-  if(gameState == 0){
+  if(gameRunning == false){
     background(0);
     image(loadScreen, 0, 0);
     music.play();
@@ -25,9 +25,9 @@ void draw(){
     text("MONSTER-KILLER GAME", width/2, (height/6)+60);
     
     fill(0);
-    text("PRESS SPACE TO PLAY", (width/2)-2, (height/2)-2);
+    text("CLICK TO PLAY", (width/2)-2, (height/2)-2);
     fill(255);
-    text("PRESS SPACE TO PLAY", width/2, height/2);
+    text("CLICK TO PLAY", width/2, height/2);
     
     fill(0);
     textSize(20);
@@ -40,36 +40,25 @@ void draw(){
     fill(255);
     rotate(0.5);
     text("Created by Alec Ray and Julian Bloch", width/2,550);
-      if(keyPressed && (key == ' ')){
-        gameState = 1;
+    
+      if(mousePressed && (mouseButton == LEFT)){
+        gameRunning = true;
         music.close();
         minim.stop();
       }//end of if mousePressed
   }//end gameRunning == false
   //OPENING SCREEN CODE ENDS HERE**************************************************
+  
   //GAME SCREEN CODE BEGINS HERE**************************************************
-  if(gameState == 1){
+  if(gameRunning == true){
   background(255);
     
-
-  player.move();
-  player.display();
-  
-  //BEGIN REFRESH PLAYER HP BAR
-  playerLifebar.xPos1 = player.xPos-50;
-  playerLifebar.yPos1 = player.yPos+250; 
-  playerLifebar.yPos2 = player.yPos+255;
-  //END REFRESH PLAYER HP BAR
-  
-  playerLifebar.display();
-
   //sets up a temp variable to measure change in player.xPos and .yPos
   player.tempX = player.xPos;
   player.tempY = player.yPos;
         
   //translates screen based on change in player.xPos and .yPos
   translate (player.countX, player.countY);
-
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
@@ -143,20 +132,16 @@ void draw(){
   //text(player.xPos,300,300);
   //text(player.yPos,300,320);
   
-  //BEGIN DISPLAY WALLS
+  //DISPLAY WALLS
   for (int i = 0; i < walls.length; i++){
     
     walls[i].display();
     walls[i].hit();
     
   }
-  //END DISPLAY WALLS
-  
-  //BEGIN LEVEL UP CODE
-  if(playerXP.XP >= 100){
-    playerXP.XP = playerXP.XP - 100;
+  if(playerXP.XP >20){
+    playerXP.XP = playerXP.XP - 20;
     playerLevel.level = playerLevel.level + 1;
-  //END LEVEL UP CODE
   }
   
   //calculates change between player.xPos and .yPos
@@ -166,4 +151,3 @@ void draw(){
   }//end gameRunning == true
   //GAME SCREEN CODE ENDS HERE*******************************************************
 }
-
