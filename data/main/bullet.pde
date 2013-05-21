@@ -47,4 +47,3 @@ class Bullet {
   }//end shoot
   
 }//end of bullet class
-         

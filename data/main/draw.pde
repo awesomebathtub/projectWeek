@@ -25,9 +25,9 @@ void draw(){
     text("MONSTER-KILLER GAME", width/2, (height/6)+60);
     
     fill(0);
-    text("CLICK TO PLAY", (width/2)-2, (height/2)-2);
+    text("PRESS SPACE TO PLAY", (width/2)-2, (height/2)-2);
     fill(255);
-    text("CLICK TO PLAY", width/2, height/2);
+    text("PRESS SPACE TO PLAY", width/2, height/2);
     
     fill(0);
     textSize(20);
@@ -41,112 +41,131 @@ void draw(){
     rotate(0.5);
     text("Created by Alec Ray and Julian Bloch", width/2,550);
     
-      if(mousePressed && (mouseButton == LEFT)){
+      if(keyPressed && (key == ' ')){
         gameRunning = true;
         music.close();
         minim.stop();
       }//end of if mousePressed
+      
   }//end gameState == 0
   //OPENING SCREEN CODE ENDS HERE**************************************************
   
+  boolean playerAlive = true;
+  
+  
   //GAME SCREEN CODE BEGINS HERE**************************************************
   if(gameRunning == true){
-  background(255);
-    
-  //sets up a temp variable to measure change in player.xPos and .yPos
-  player.tempX = player.xPos;
-  player.tempY = player.yPos;
+    if(playerAlive == true){
+      background(255);
+      //sets up a temp variable to measure change in player.xPos and .yPos
+      player.tempX = player.xPos;
+      player.tempY = player.yPos;
+            
+      //translates screen based on change in player.xPos and .yPos
+      translate (player.countX, player.countY);
+      
+      for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
         
-  //translates screen based on change in player.xPos and .yPos
-  translate (player.countX, player.countY);
-  
-  for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
-    
-    Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
-    
-    bullet.display();
-    bullet.shoot();
-    
-    if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height || bullet.hit == true){//removes bullets when they leave the screen
-      
-      bullets.remove(i);
-      
-    }//end if
-  
-  }//end list constructor
-    
-  player.move();
-  player.display();
-  
-  //BEGIN REFRESH PLAYER HP BAR
-  playerLifebar.xPos1 = player.xPos-50;
-  playerLifebar.yPos1 = player.yPos+250; 
-  playerLifebar.yPos2 = player.yPos+255;
-  //END REFRESH PLAYER HP BAR
-  
-  playerLifebar.display();
-  
-  for (int i = 0; i < monsters.length; i++){
-    
-    if (monsters[i].living == true){
-      monsters[i].display();
-      monsters[i].hit();
-    }
-    
-  }
-  
-  if (monsters[0].living == true){
-    monsters[0].patrol(0,0,200,150);
-  }
-  
-  playerLevel.display();
-  playerXP.display();
-  
-  //DISPLAY MONSTER LIFEBAR
-  
-  for (int i = 0; i < monsters.length; i++){
-    
-    if (monsters[i].living == true){
-      
-      monsterLifebar[i].display();    
-      monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
-      monsterLifebar[i].yPos1 = monsters[i].yPos - 15;
-      monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
-    
-    }
-  
-  }
-  
-  //monster death
-  for (int i = 0; i < monsters.length; i++){
-      
-    if (monsterLifebar[i].health <= 0){
+        Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
         
-      monsters[i].death(i);
+        bullet.display();
+        bullet.shoot();
         
-    }
+        if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height || bullet.hit == true){//removes bullets when they leave the screen
+          
+          bullets.remove(i);
+          
+        }//end if
       
-  }
-  //TESTING PLAYER POSITION
-  //text(player.xPos,300,300);
-  //text(player.yPos,300,320);
+      }//end list constructor
+        
+      player.move();
+      player.display();
+      
+      //BEGIN REFRESH PLAYER HP BAR
+      playerLifebar.xPos1 = player.xPos-50;
+      playerLifebar.yPos1 = player.yPos+250; 
+      playerLifebar.yPos2 = player.yPos+255;
+      //END REFRESH PLAYER HP BAR
+      
+      playerLifebar.display();
+      
+      for (int i = 0; i < monsters.length; i++){
+        
+        if (monsters[i].living == true){
+          monsters[i].display();
+          monsters[i].hit();
+        }
+        
+      }
+      
+      if (monsters[0].living == true){
+        monsters[0].patrol(0,0,200,150);
+      }
+      
+      playerLevel.display();
+      playerXP.display();
+      
+      //DISPLAY MONSTER LIFEBAR
+      for (int i = 0; i < monsters.length; i++){
+        
+        if (monsters[i].living == true){
+          
+          monsterLifebar[i].display();    
+          monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
+          monsterLifebar[i].yPos1 = monsters[i].yPos - 15;
+          monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
+        
+        }
+      
+      }
+      
+      //BEGIN MONSTER DEATH
+      for (int i = 0; i < monsters.length; i++){
+          
+        if (monsterLifebar[i].health <= 0){
+            
+          monsters[i].death(i);
+            
+        }//end if
+      }//end for
+      //END MONSTER DEATH
+      
+      //BEGIN DISPLAY WALLS
+      for (int i = 0; i < walls.length; i++){
+        
+        walls[i].display();
+        walls[i].hit();
+        
+      }
+      //END DISPLAY WALLS
+      
+      //BEGIN LEVEL UP
+      if(playerXP.XP >=100){
+        playerXP.XP = playerXP.XP - 100;
+        playerLevel.level = playerLevel.level + 1;
+      }
+      //END LEVEL UP
+      
+      //calculates change between player.xPos and .yPos
+      player.countX -= (player.xPos - player.tempX);
+      player.countY -= (player.yPos - player.tempY);
+      
+      //end gameState == true
+      //BEGIN DEATH
+      
+      if(playerLifebar.health <= 0){
+        playerAlive = false;
+      }//end if playerLifebar
+      
+  }//END IF PLAYERALIVE == TRUE
   
-  //DISPLAY WALLS
-  for (int i = 0; i < walls.length; i++){
-    
-    walls[i].display();
-    walls[i].hit();
-    
-  }
-  if(playerXP.XP >=100){
-    playerXP.XP = playerXP.XP - 100;
-    playerLevel.level = playerLevel.level + 1;
-  }
-  
-  //calculates change between player.xPos and .yPos
-  player.countX -= (player.xPos - player.tempX);
-  player.countY -= (player.yPos - player.tempY);
-  
-  }//end gameState == 1
-  //GAME SCREEN CODE ENDS HERE*******************************************************
-}
+    if(playerAlive == false){
+      background(0);
+      textAlign(CENTER);
+      fill(255);
+      textSize(20);
+      text("GAME OVER", width/2, height/2);
+    }//END IF PLAYERALIVE == FALSE
+  }//END IF GAME RUNNING
+}//END DRAW

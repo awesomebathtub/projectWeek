@@ -46,7 +46,3 @@ class Wall {
   }//end hit
   
 }
-//test sync
-//test sync
-//test sync
-//some code
