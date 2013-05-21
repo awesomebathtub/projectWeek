@@ -24,7 +24,7 @@ class Player {
   
   void display() {
     
-    rectMode (CORNER);
+    rectMode(CENTER);
     fill(0,255,255);
     rect(xPos,yPos,size,size);
     

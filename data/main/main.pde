@@ -30,21 +30,21 @@ void setup(){
   
   bullets = new ArrayList(0);
   size(600,600);
-  player = new Player(300,300,4,30);
-  playerLifebar = new Lifebar((width/2)-50,height-30,(height-40),100);
   
-  playerXP = new Expbar((width/2)-50,height-20,(width/2)-50,(height-10));
+  player = new Player(300,300,4,30);
+  playerLifebar = new Lifebar(player.xPos-10, player.yPos-18, player.xPos+10, player.yPos-15, 10,10);
+  playerXP = new Expbar();
   playerLevel = new Level(1);
   
   for (int i = 0; i < walls.length; i++){
-    walls[i] = new Wall (200,200,240,210,#000000);
+    walls[i] = new Wall (200+(i*40),200,240,210,#000000);
   }
   
   for (int i = 0; i < 10; i++){    
     monsters[i] = new Monster (3, 32);    
   }
   for(int i = 0; i < monsters.length; i++){
-    monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].yPos-5, 75);
+    monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].xPos+10, monsters[i].yPos-5,75,75);
   }
   
   temp = new Monster (3, 32);

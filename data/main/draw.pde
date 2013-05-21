@@ -42,6 +42,7 @@ void draw(){
     
   player.move();
   player.display();
+
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
@@ -100,7 +101,9 @@ void draw(){
     }
       
   }
-  
+  //TESTING PLAYER POSITION
+  text(player.xPos,300,300);
+  text(player.yPos,300,320);
   
   //DISPLAY WALLS
   for (int i = 0; i < walls.length; i++){
@@ -109,8 +112,8 @@ void draw(){
     walls[i].hit();
     
   }
-  if(playerXP.XP >100){
-    playerXP.XP = 0;
+  if(playerXP.XP >20){
+    playerXP.XP = playerXP.XP - 20;
     playerLevel.level = playerLevel.level + 1;
   }
   }//end gameRunning == true
