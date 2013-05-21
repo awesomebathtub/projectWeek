@@ -4,26 +4,26 @@ void keyTyped (){
 
 void keyPressed () {
   
-  if(key == 'w'){
+  if(key == 'w' || key == 'W'){
     up = true;}
-  if(key == 'a'){
+  if(key == 'a' || key == 'A'){
     left = true;}
-  if(key == 's'){
+  if(key == 's' || key == 'S'){
     dn = true;}
-  if(key == 'd'){
+  if(key == 'd' || key == 'D'){
     right = true;}
     
 }//end of keyPressed
 
 void keyReleased () {
   
-  if(key == 'w'){
+  if(key == 'w' || key == 'W'){
     up = false;}
-  if(key == 'a'){
+  if(key == 'a' || key == 'A'){
     left = false;}
-  if(key == 's'){
+  if(key == 's' || key == 'S'){
     dn = false;}
-  if(key == 'd'){
+  if(key == 'd' || key == 'D'){
     right = false;}
       
 }//end of keyReleased
