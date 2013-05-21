@@ -28,6 +28,19 @@ void draw(){
     fill(255);
     text("CLICK TO PLAY", width/2, height/2);
     
+    fill(0);
+    textSize(20);
+    rotate(-0.5);
+    text("MUSIC BY LIDSKY",348,398);
+    fill(255,255,0);
+    text("MUSIC BY LIDSKY",350,400);
+    
+    textSize(10);
+    fill(255);
+    rotate(0.5);
+    text("Created by Alec Ray and Julian Bloch", width/2,550);
+    
+    
       if(mousePressed && (mouseButton == LEFT)){
         gameRunning = true;
         music.close();
