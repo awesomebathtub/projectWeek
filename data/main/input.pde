@@ -1,7 +1,3 @@
-void keyTyped (){
- 
-}//end keyTyped
-
 void keyPressed () {
   
   if(key == 'w' || key == 'W'){

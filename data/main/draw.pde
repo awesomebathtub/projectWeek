@@ -40,35 +40,18 @@ void draw(){
     fill(255);
     rotate(0.5);
     text("Created by Alec Ray and Julian Bloch", width/2,550);
-    
-<<<<<<< HEAD
-    
       if(keyPressed && (key == ' ')){
         gameState = 1;
-=======
-      if(mousePressed && (mouseButton == LEFT)){
-        gameRunning = true;
->>>>>>> f6afec0e7c32b1e25c9db7ac2c8a386e377bdc71
         music.close();
         minim.stop();
       }//end of if mousePressed
   }//end gameRunning == false
   //OPENING SCREEN CODE ENDS HERE**************************************************
-  
-  //FADE SCREEN FOR LULZ
-  if(gameState == 1){
-    for(int i=0;i<256;i++){
-      background(i);
-      if(i==255){
-        gameState = 2;
-      }
-    }
-  }
   //GAME SCREEN CODE BEGINS HERE**************************************************
-  if(gameState == 2){
+  if(gameState == 1){
   background(255);
     
-<<<<<<< HEAD
+
   player.move();
   player.display();
   
@@ -79,14 +62,14 @@ void draw(){
   //END REFRESH PLAYER HP BAR
   
   playerLifebar.display();
-=======
+
   //sets up a temp variable to measure change in player.xPos and .yPos
   player.tempX = player.xPos;
   player.tempY = player.yPos;
         
   //translates screen based on change in player.xPos and .yPos
   translate (player.countX, player.countY);
->>>>>>> f6afec0e7c32b1e25c9db7ac2c8a386e377bdc71
+
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
@@ -183,3 +166,4 @@ void draw(){
   }//end gameRunning == true
   //GAME SCREEN CODE ENDS HERE*******************************************************
 }
+
