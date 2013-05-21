@@ -1,4 +1,5 @@
 void draw(){
+
   //OPENING SCREEN CODE BEGINS HERE**********************************************
   if(gameRunning == false){
     background(0);
@@ -40,7 +41,6 @@ void draw(){
     rotate(0.5);
     text("Created by Alec Ray and Julian Bloch", width/2,550);
     
-    
       if(mousePressed && (mouseButton == LEFT)){
         gameRunning = true;
         music.close();
@@ -53,17 +53,10 @@ void draw(){
   if(gameRunning == true){
   background(255);
     
-  player.move();
-  player.display();
-  
-  //BEGIN REFRESH PLAYER HP BAR
-  playerLifebar.xPos1 = player.xPos-50;
-  playerLifebar.yPos1 = player.yPos+250; 
-  playerLifebar.xPos1 = player.xPos+50;
-  playerLifebar.yPos2 = player.yPos+255;
-  //END REFRESH PLAYER HP BAR
-  
-  playerLifebar.display();
+  player.tempX = player.xPos;
+  player.tempY = player.yPos;
+        
+  translate (player.countX, player.countY);
   
   for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
     
@@ -79,6 +72,18 @@ void draw(){
     }//end if
   
   }//end list constructor
+    
+  player.move();
+  player.display();
+  
+  //BEGIN REFRESH PLAYER HP BAR
+  playerLifebar.xPos1 = player.xPos-50;
+  playerLifebar.yPos1 = player.yPos+250; 
+  playerLifebar.xPos1 = player.xPos+50;
+  playerLifebar.yPos2 = player.yPos+255;
+  //END REFRESH PLAYER HP BAR
+  
+  playerLifebar.display();
   
   for (int i = 0; i < monsters.length; i++){
     
@@ -136,6 +141,10 @@ void draw(){
     playerXP.XP = playerXP.XP - 20;
     playerLevel.level = playerLevel.level + 1;
   }
+  
+  player.countX -= (player.xPos - player.tempX);
+  player.countY -= (player.yPos - player.tempY);
+  
   }//end gameRunning == true
   //GAME SCREEN CODE ENDS HERE*******************************************************
 }

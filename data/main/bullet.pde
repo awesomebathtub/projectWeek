@@ -7,10 +7,10 @@ class Bullet {
   float ySpeed;
   float ang;
   
-  Bullet(float xPos_, float yPos_, float speed_) {
+  Bullet(float speed_) {
     
-    xPos = xPos_;
-    yPos = yPos_;
+    xPos = player.xPos;
+    yPos = player.yPos;
     speed = speed_;
     ang = atan2((mouseY-player.yPos),(mouseX-player.xPos));//sets the angle of the bullet's path
     xSpeed = cos(ang)*speed;//sets xSpeed based on angle to cursor

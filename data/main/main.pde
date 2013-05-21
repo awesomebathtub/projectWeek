@@ -37,7 +37,7 @@ void setup(){
   playerLevel = new Level(1);
     
   for (int i = 0; i < walls.length; i++){
-    walls[i] = new Wall (200+(i*40),200,240,210,#000000);
+    walls[i] = new Wall (200,200,240,210,#000000);
   }
   
   for (int i = 0; i < 10; i++){    
@@ -49,6 +49,6 @@ void setup(){
   
   temp = new Monster (3, 32);
   
-}//end of se/jk
+}//end of setup
 
 
