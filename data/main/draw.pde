@@ -1,6 +1,6 @@
 void draw(){
   //OPENING SCREEN CODE BEGINS HERE**********************************************
-  if(gameRunning == false){
+  if(gameState == 0){
     background(0);
     image(loadScreen, 0, 0);
     music.play();
@@ -24,9 +24,9 @@ void draw(){
     text("MONSTER-KILLER GAME", width/2, (height/6)+60);
     
     fill(0);
-    text("CLICK TO PLAY", (width/2)-2, (height/2)-2);
+    text("PRESS SPACE TO PLAY", (width/2)-2, (height/2)-2);
     fill(255);
-    text("CLICK TO PLAY", width/2, height/2);
+    text("PRESS SPACE TO PLAY", width/2, height/2);
     
     fill(0);
     textSize(20);
@@ -41,16 +41,25 @@ void draw(){
     text("Created by Alec Ray and Julian Bloch", width/2,550);
     
     
-      if(mousePressed && (mouseButton == LEFT)){
-        gameRunning = true;
+      if(keyPressed && (key == ' ')){
+        gameState = 1;
         music.close();
         minim.stop();
       }//end of if mousePressed
   }//end gameRunning == false
   //OPENING SCREEN CODE ENDS HERE**************************************************
   
+  //FADE SCREEN FOR LULZ
+  if(gameState == 1){
+    for(int i=0;i<256;i++){
+      background(i);
+      if(i==255){
+        gameState = 2;
+      }
+    }
+  }
   //GAME SCREEN CODE BEGINS HERE**************************************************
-  if(gameRunning == true){
+  if(gameState == 2){
   background(255);
     
   player.move();
@@ -59,7 +68,6 @@ void draw(){
   //BEGIN REFRESH PLAYER HP BAR
   playerLifebar.xPos1 = player.xPos-50;
   playerLifebar.yPos1 = player.yPos+250; 
-  playerLifebar.xPos1 = player.xPos+50;
   playerLifebar.yPos2 = player.yPos+255;
   //END REFRESH PLAYER HP BAR
   
@@ -125,16 +133,20 @@ void draw(){
   //text(player.xPos,300,300);
   //text(player.yPos,300,320);
   
-  //DISPLAY WALLS
+  //BEGIN DISPLAY WALLS
   for (int i = 0; i < walls.length; i++){
     
     walls[i].display();
     walls[i].hit();
     
   }
-  if(playerXP.XP >20){
-    playerXP.XP = playerXP.XP - 20;
+  //END DISPLAY WALLS
+  
+  //BEGIN LEVEL UP CODE
+  if(playerXP.XP >= 100){
+    playerXP.XP = playerXP.XP - 100;
     playerLevel.level = playerLevel.level + 1;
+  //END LEVEL UP CODE
   }
   }//end gameRunning == true
   //GAME SCREEN CODE ENDS HERE*******************************************************
