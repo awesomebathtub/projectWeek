@@ -135,7 +135,7 @@ class Monster
     
     if (living == true){
       
-      playerXP.XP +=30;
+      playerXP.XP +=15;
       
     }
     living = false;

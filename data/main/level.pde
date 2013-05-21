@@ -8,7 +8,7 @@ class Level {
   
   void display(){
     textSize(18);
-    text(level,width-580, height-20);
+    text(level,player.xPos-275, player.yPos+275);
     
   }//end display
   

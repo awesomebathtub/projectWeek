@@ -81,7 +81,6 @@ void draw(){
   //BEGIN REFRESH PLAYER HP BAR
   playerLifebar.xPos1 = player.xPos-50;
   playerLifebar.yPos1 = player.yPos+250; 
-  playerLifebar.xPos1 = player.xPos+50;
   playerLifebar.yPos2 = player.yPos+255;
   //END REFRESH PLAYER HP BAR
   
@@ -139,8 +138,8 @@ void draw(){
     walls[i].hit();
     
   }
-  if(playerXP.XP >20){
-    playerXP.XP = playerXP.XP - 20;
+  if(playerXP.XP >=100){
+    playerXP.XP = playerXP.XP - 100;
     playerLevel.level = playerLevel.level + 1;
   }
   
