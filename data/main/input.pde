@@ -29,6 +29,7 @@ void keyReleased () {
 }//end of keyReleased
 
 void mouseReleased (){
+   
   if(player.ammo > 0){
     bullets.add (new Bullet (10));
     bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
@@ -39,6 +40,5 @@ void mouseReleased (){
   if(player.ammo == 0){
     noShootSound = noShootMinim.loadFile("noShoot.mp3");
     noShootSound.play();
-
   }
 }//end mouseReleased

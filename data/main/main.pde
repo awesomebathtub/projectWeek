@@ -37,7 +37,7 @@ void setup(){
   bullets = new ArrayList(0);
   size(600,600);
   
-  player = new Player(300,300,4,2);
+  player = new Player(300,300,4,30);
   playerLifebar = new Lifebar(player.xPos-50, player.yPos+250, player.xPos+50, player.yPos-250, 100,100);
   playerXP = new Expbar();
   playerLevel = new Level(1);
