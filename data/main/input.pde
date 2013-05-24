@@ -29,9 +29,16 @@ void keyReleased () {
 }//end of keyReleased
 
 void mouseReleased (){
-  
-  bullets.add (new Bullet (10));
-  bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
-  bulletSound.play();
-  
+  if(player.ammo > 0){
+    bullets.add (new Bullet (10));
+    bulletSound = bulletMinim.loadFile("laser_bullet.mp3");
+    bulletSound.play();
+    player.ammo-=1;
+  }
+   
+  if(player.ammo == 0){
+    noShootSound = noShootMinim.loadFile("noShoot.mp3");
+    noShootSound.play();
+
+  }
 }//end mouseReleased

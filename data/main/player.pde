@@ -29,6 +29,7 @@ class Player {
     rectMode(CENTER);
     fill(0,255,255);
     rect(xPos,yPos,size,size);
+    text(ammo,xPos+250,yPos+250);
     
   }//end display
   

@@ -165,7 +165,9 @@ void draw(){
       textAlign(CENTER);
       fill(255);
       textSize(20);
+      translate(-player.countX,-player.countY);
       text("GAME OVER", width/2, height/2);
+      noLoop();
     }//END IF PLAYERALIVE == FALSE
   }//END IF GAME RUNNING
 }//END DRAW

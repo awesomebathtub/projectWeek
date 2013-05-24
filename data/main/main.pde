@@ -3,8 +3,11 @@ PImage loadScreen;
 
 Minim minim;
 Minim bulletMinim;
+Minim noShootMinim;
+
 AudioPlayer music;
 AudioPlayer bulletSound;
+AudioPlayer noShootSound;
 
 Player player;
 ArrayList bullets;
@@ -24,15 +27,17 @@ void setup(){
 
   loadScreen = loadImage("loadScreen.jpg");
   frameRate(60);
+  
   minim = new Minim(this);
   bulletMinim = new Minim(this);
+  noShootMinim = new Minim(this);
   
   music = minim.loadFile("opening_theme.mp3");
   
   bullets = new ArrayList(0);
   size(600,600);
   
-  player = new Player(300,300,4,30);
+  player = new Player(300,300,4,2);
   playerLifebar = new Lifebar(player.xPos-50, player.yPos+250, player.xPos+50, player.yPos-250, 100,100);
   playerXP = new Expbar();
   playerLevel = new Level(1);
