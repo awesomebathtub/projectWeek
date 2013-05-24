@@ -1,5 +1,6 @@
 import ddf.minim.*;
 PImage loadScreen;
+PImage ground_1;
 
 Minim minim;
 Minim bulletMinim;
@@ -26,6 +27,7 @@ boolean gameRunning = false;
 void setup(){
 
   loadScreen = loadImage("loadScreen.jpg");
+  ground_1 = loadImage("ground_1.jpg");
   frameRate(60);
   
   minim = new Minim(this);
@@ -50,7 +52,7 @@ void setup(){
     monsters[i] = new Monster (3, 32);    
   }
   for (int i = 0; i < monsters.length; i++){
-    monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].xPos+10, monsters[i].yPos-5,75,75);
+    monsterLifebar[i] = new Lifebar(monsters[i].xPos-10, monsters[i].yPos-15, monsters[i].xPos+10, monsters[i].yPos-5,50,50);
   }
   
   temp = new Monster (3, 32);

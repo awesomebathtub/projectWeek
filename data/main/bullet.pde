@@ -20,8 +20,8 @@ class Bullet {
   
   void display() {
     
-    fill (0,0,255);
-    ellipse(xPos, yPos,2,2);
+    fill (255);
+    ellipse(xPos, yPos,5,5);
     
   }//end of display
   

@@ -1,8 +1,6 @@
 /*
 To add:
-
-- Camera to follow player
-- multiple monsters
-- implement textures
-- leveling/experience
+- make leveling do stuff (increase hp, mana?)
+- more items (different guns)
+- abilities
 */

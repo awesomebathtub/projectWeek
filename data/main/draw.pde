@@ -56,14 +56,16 @@ void draw(){
   //GAME SCREEN CODE BEGINS HERE**************************************************
   if(gameRunning == true){
     if(playerAlive == true){
-      background(255);
+      background(0);
+      
+      
       //sets up a temp variable to measure change in player.xPos and .yPos
       player.tempX = player.xPos;
       player.tempY = player.yPos;
             
       //translates screen based on change in player.xPos and .yPos
       translate (player.countX, player.countY);
-      
+      image(ground_1,-500,-500);
       for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
         
         Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
