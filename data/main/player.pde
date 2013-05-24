@@ -47,21 +47,7 @@ class Player {
       if(right == true && xPos < width - size){
         xPos += speed;
       }
-      
-      
-      if (xPos > width - size){
-        xPos = width - size;
-      }
-      if (xPos < 0){
-        xPos = 0;
-      }
-      if (yPos > height - size){
-        yPos = height - size;
-      }
-      if (yPos < 0){
-        yPos = 0;
-      }
-              
+                   
   }//end of move function
   
 }//end of player class
