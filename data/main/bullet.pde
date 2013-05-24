@@ -13,14 +13,14 @@ class Bullet {
     xPos = player.xPos;
     yPos = player.yPos;
     speed = speed_;
-    ang = atan2((mouseY-player.yPos),(mouseX-player.xPos));//sets the angle of the bullet's path
-    xSpeed = cos(ang)*speed;//sets xSpeed based on angle to cursor
-    ySpeed = sin(ang)*speed;//sets ySpeed based on angle to cursor
+    xSpeed = -(speed*(player.xPos - (mouseX-player.countX)))/dist(player.xPos,player.yPos,mouseX-player.countX,mouseY-player.countY);
+    ySpeed = -(speed*(player.yPos - (mouseY-player.countY)))/dist(player.xPos,player.yPos,mouseX-player.countX,mouseY-player.countY);
     
   }//end of constructor
   
   void display() {
     
+    println (xSpeed);
     fill (0,0,255);
     ellipse(xPos, yPos,2,2);
     
