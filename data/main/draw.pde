@@ -65,7 +65,8 @@ void draw(){
             
       //translates screen based on change in player.xPos and .yPos
       translate (player.countX, player.countY);
-      image(ground_1,-500,-500);
+      image(ground_1,-200,-200);
+
       for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
         
         Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
@@ -103,6 +104,12 @@ void draw(){
       
       if (monsters[0].living == true){
         monsters[0].patrol(0,0,200,150);
+      } 
+      if (monsters[1].living == true){
+        monsters[1].patrol(300,300,200,150);
+      }
+      if (monsters[2].living == true){
+        monsters[2].patrol(500,500,100,100);
       }
       
       playerLevel.display();
@@ -151,8 +158,10 @@ void draw(){
       
       //calculates change between player.xPos and .yPos
       player.countX -= (player.xPos - player.tempX);
-      player.countY -= (player.yPos - player.tempY);
-      
+      player.countY -=(player.yPos - player.tempY);
+            for (int i = 0; i < monsters.length; i++){
+      image(monsterSprite,monsters[i].xPos,monsters[i].yPos);
+      }
       //end gameState == true
       //BEGIN DEATH
       

@@ -1,6 +1,7 @@
 import ddf.minim.*;
 PImage loadScreen;
 PImage ground_1;
+PImage monsterSprite;
 
 Minim minim;
 Minim bulletMinim;
@@ -28,6 +29,7 @@ void setup(){
 
   loadScreen = loadImage("loadScreen.jpg");
   ground_1 = loadImage("ground_1.jpg");
+  monsterSprite = loadImage("monsterSprite.jpg");
   frameRate(60);
   
   minim = new Minim(this);
@@ -43,7 +45,7 @@ void setup(){
   playerLifebar = new Lifebar(player.xPos-50, player.yPos+250, player.xPos+50, player.yPos-250, 100,100);
   playerXP = new Expbar();
   playerLevel = new Level(1);
-    
+  
   for (int i = 0; i < walls.length; i++){
     walls[i] = new Wall (200,200,240,210,#000000);
   }

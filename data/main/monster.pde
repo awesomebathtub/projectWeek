@@ -5,7 +5,7 @@ class Monster
   float speed;
   float xSpeed;
   float ySpeed;
-  float size;
+  float size;//monster size is 32x32
   float ang;
   boolean sighted = false;
   boolean living = true;
@@ -16,7 +16,7 @@ class Monster
     speed = speed_;
     xSpeed = speed;
     ySpeed = 0;
-    size = size_;
+    size = size_;//monster size is 32x32
     xPos = width+size+1;
     yPos = height+size+1;
 
@@ -27,7 +27,7 @@ class Monster
     
     rectMode (CORNER);
     fill(255,0,0);
-    rect(xPos,yPos,size,size);
+    rect(xPos,yPos,size,size);//monster size is 32x32
     
   }//end display
   

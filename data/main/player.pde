@@ -35,19 +35,33 @@ class Player {
   
   void move() {
    
-      if(up == true && yPos > 0){
+      if(up == true /* && yPos > 0*/){
         yPos -= speed;  
       }
-      if(left == true && xPos > 0){
+      if(left == true /* && xPos > 0*/){
         xPos -= speed;
       }        
-      if(dn == true && yPos < height - size){
+      if(dn == true /* &&  yPos  < height - size*/){
         yPos += speed;
       }
-      if(right == true && xPos < width - size){
+      if(right == true /* && xPos < width - size*/){
         xPos += speed;
       }
-                   
+      
+      /*
+      if (xPos > width +1000 - size){
+        xPos = width - size;
+      }
+      if (xPos < 0){
+        xPos = 0;
+      }
+      if (yPos > height + 1000 - size){
+        yPos = height - size;
+      }
+      if (yPos < 0){
+        yPos = 0;
+      }*/
+              
   }//end of move function
   
 }//end of player class
