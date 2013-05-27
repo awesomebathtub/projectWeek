@@ -74,7 +74,7 @@ void draw(){
         bullet.display();
         bullet.shoot();
         
-        if (bullet.xPos < 0 || bullet.xPos > width || bullet.yPos < 0 || bullet.yPos > height || bullet.hit == true){//removes bullets when they leave the screen
+        if (bullet.xPos < -1000 || bullet.xPos > width+1000 || bullet.yPos < -1000 || bullet.yPos > height+1000 || bullet.hit == true){//removes bullets when they leave the screen
           
           bullets.remove(i);
           
