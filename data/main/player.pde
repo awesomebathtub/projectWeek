@@ -26,7 +26,7 @@ class Player {
   
   void display() {
     
-    rectMode(CENTER);
+    rectMode(CORNER);
     fill(0,255,255);
     rect(xPos,yPos,size,size);
     text(ammo,xPos+250,yPos+250);

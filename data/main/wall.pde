@@ -27,19 +27,19 @@ class Wall {
   void hit (){
     
     //BEGIN PLAYER HIT DETECT
-    if (player.yPos < y2 && player.yPos > y2 && player.xPos < x2 && player.xPos+player.size > x1){
+    if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && up == true){
       player.yPos = y2;
     }//end bottom edge
     
-    if (player.yPos+player.size > y1 && player.yPos+player.size < y1 && player.xPos < x2 && player.xPos + player.size > x1){
+    if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && dn == true){
       player.yPos = y1 - player.size;
     }//end top edge
     
-    if (player.xPos < x2 && player.xPos > x2 && player.yPos < y2 && player.yPos+player.size > y1){
+    if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && left == true){
       player.xPos = x2;
     }//end right edge
     
-    if (player.xPos+player.size > x1 && player.xPos+player.size < x1 && player.yPos < y2 && player.yPos + player.size > y1){
+    if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && right == true){
       player.xPos = x1 - player.size;
     }//end left edge
 

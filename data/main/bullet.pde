@@ -10,8 +10,8 @@ class Bullet {
   
   Bullet(float speed_) {
     
-    xPos = player.xPos;
-    yPos = player.yPos;
+    xPos = player.xPos + player.size/2;
+    yPos = player.yPos + player.size/2;
     speed = speed_;
     xSpeed = -(speed*(player.xPos - (mouseX-player.countX)))/dist(player.xPos,player.yPos,mouseX-player.countX,mouseY-player.countY);
     ySpeed = -(speed*(player.yPos - (mouseY-player.countY)))/dist(player.xPos,player.yPos,mouseX-player.countX,mouseY-player.countY);

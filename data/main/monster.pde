@@ -138,6 +138,7 @@ class Monster
       playerXP.XP +=15;
       
     }
+    
     living = false;
     monsters[i] = monsters[monsters.length-1];
     shorten(monsters);

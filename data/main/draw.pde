@@ -52,17 +52,12 @@ void draw(){
   
   boolean playerAlive = true;
   
-  
   //GAME SCREEN CODE BEGINS HERE**************************************************
   if(gameRunning == true){
     if(playerAlive == true){
       background(0);
-      
-      
-      //sets up a temp variable to measure change in player.xPos and .yPos
-      player.tempX = player.xPos;
-      player.tempY = player.yPos;
-            
+     
+                 
       //translates screen based on change in player.xPos and .yPos
       translate (player.countX, player.countY);
       image(ground_1,-200,-200);
@@ -81,10 +76,21 @@ void draw(){
         }//end if
       
       }//end list constructor
-        
-      player.move();
-      player.display();
       
+      player.tempX = player.xPos;
+      player.tempY = player.yPos;  
+      
+      player.move();          
+      
+      //BEGIN DISPLAY WALLS
+      for (int i = 0; i < walls.length; i++){
+        
+        walls[i].hit();
+        walls[i].display();
+        
+      }
+      //END DISPLAY WALLS
+            
       //BEGIN REFRESH PLAYER HP BAR
       playerLifebar.xPos1 = player.xPos-50;
       playerLifebar.yPos1 = player.yPos+250; 
@@ -144,7 +150,6 @@ void draw(){
       for (int i = 0; i < walls.length; i++){
         
         walls[i].display();
-        walls[i].hit();
         
       }
       //END DISPLAY WALLS
@@ -159,15 +164,23 @@ void draw(){
       //calculates change between player.xPos and .yPos
       player.countX -= (player.xPos - player.tempX);
       player.countY -=(player.yPos - player.tempY);
-            for (int i = 0; i < monsters.length; i++){
-      image(monsterSprite,monsters[i].xPos,monsters[i].yPos);
-      }
-      //end gameState == true
-      //BEGIN DEATH
       
+      
+      for (int i = 0; i < monsters.length; i++){
+        if (monsters[i].living == true){
+          image(monsterSprite,monsters[i].xPos,monsters[i].yPos);
+        }
+      }
+      
+      
+      //end gameState == true
+      
+      //BEGIN DEATH      
       if(playerLifebar.health <= 0){
         playerAlive = false;
       }//end if playerLifebar
+      
+      player.display();
       
   }//END IF PLAYERALIVE == TRUE
   
