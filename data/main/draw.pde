@@ -136,9 +136,11 @@ void draw(){
         if (monsterLifebar[i].health <= 0){
             
           monsters[i].death(i);
-            
+          
+          
         }//end if
       }//end for
+      
       //END MONSTER DEATH
       
       //BEGIN DISPLAY WALLS
