@@ -56,10 +56,10 @@ void draw(){
   if(gameRunning == true){
     if(playerAlive == true){
       background(0);
-     
-                 
-      //translates screen based on change in player.xPos and .yPos
-      translate (player.countX, player.countY);
+          
+      player.move();
+      player.follow();
+      
       image(ground_1,-200,-200);
 
       for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
@@ -76,12 +76,7 @@ void draw(){
         }//end if
       
       }//end list constructor
-      
-      player.tempX = player.xPos;
-      player.tempY = player.yPos;  
-      
-      player.move();          
-      
+            
       //BEGIN DISPLAY WALLS
       for (int i = 0; i < walls.length; i++){
         
@@ -159,12 +154,7 @@ void draw(){
         playerXP.XP = playerXP.XP - 100;
         playerLevel.level = playerLevel.level + 1;
       }
-      //END LEVEL UP
-      
-      //calculates change between player.xPos and .yPos
-      player.countX -= (player.xPos - player.tempX);
-      player.countY -=(player.yPos - player.tempY);
-      
+      //END LEVEL UP      
       
       for (int i = 0; i < monsters.length; i++){
         if (monsters[i].living == true){

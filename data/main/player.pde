@@ -35,34 +35,32 @@ class Player {
   
   void move() {
    
-      if(up == true /* && yPos > 0*/){
-        yPos -= speed;  
-      }
-      if(left == true /* && xPos > 0*/){
-        xPos -= speed;
-      }        
-      if(dn == true /* &&  yPos  < height - size*/){
-        yPos += speed;
-      }
-      if(right == true /* && xPos < width - size*/){
-        xPos += speed;
-      }
-      
-      /*
-      if (xPos > width +1000 - size){
-        xPos = width - size;
-      }
-      if (xPos < 0){
-        xPos = 0;
-      }
-      if (yPos > height + 1000 - size){
-        yPos = height - size;
-      }
-      if (yPos < 0){
-        yPos = 0;
-      }*/
+    tempX = xPos;
+    tempY = yPos;
+    
+    if(up == true /* && yPos > 0*/){
+      yPos -= speed;  
+    }
+    if(left == true /* && xPos > 0*/){
+      xPos -= speed;
+    }        
+    if(dn == true /* &&  yPos  < height - size*/){
+      yPos += speed;
+    }
+    if(right == true /* && xPos < width - size*/){
+      xPos += speed;
+    }
+    
+    countX += tempX - xPos;
+    countY += tempY - yPos;
               
   }//end of move function
+  
+  void follow() {
+    
+    translate (countX, countY);
+    
+  }
   
 }//end of player class
 
