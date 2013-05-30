@@ -27,20 +27,30 @@ class Wall {
   void hit (){
     
     //BEGIN PLAYER HIT DETECT
+    
+    //when you hit the bottom of the wall
     if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && up == true){
       player.yPos = y2;
+      player.countY -= player.speed;// so the camera doesn't move when you hit the wall
     }//end bottom edge
     
+    //when you hit the top of the wall
     if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && dn == true){
       player.yPos = y1 - player.size;
+      player.countY += player.speed;// so the camera doesn't move when you hit the wall
     }//end top edge
     
+    //when you hit the right side of the wall
     if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && left == true){
       player.xPos = x2;
+      player.countX -= player.speed;// so the camera doesn't move when you hit the wall
     }//end right edge
     
+    //when you hit the left side of the wall
     if (player.yPos < y2 && player.yPos + player.size > y1 && player.xPos < x2 && player.xPos+player.size > x1 && right == true){
       player.xPos = x1 - player.size;
+      player.countX += player.speed;// so the camera doesn't move when you hit the wall
+
     }//end left edge
 
   }//end hit

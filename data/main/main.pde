@@ -30,7 +30,7 @@ void setup(){
 
   loadScreen = loadImage("loadScreen.jpg");
   ground_1 = loadImage("ground_1.jpg");
-  monsterSprite = loadImage("monsterSprite.jpg");
+  monsterSprite = loadImage("monsterSprite.gif");
   frameRate(60);
   
   minim = new Minim(this);

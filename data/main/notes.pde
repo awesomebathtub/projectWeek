@@ -1,7 +1,2 @@
 /*
-To add:
-- make leveling do stuff (increase hp, mana?)
-- more items (different guns)
-- abilities
-
-*/
+- need to fix camera shake on wall collision

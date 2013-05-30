@@ -56,7 +56,7 @@ class Player {
               
   }//end of move function
   
-  void follow() {
+  void follow() {//function for the "camera" to follow the player
     
     translate (countX, countY);
     

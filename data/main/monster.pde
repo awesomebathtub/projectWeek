@@ -24,9 +24,9 @@ class Monster
   }//end of constructor
   
   void display() {
-    
+    noStroke();
     rectMode (CORNER);
-    fill(255,0,0);
+    fill(255,0,0,0);
     rect(xPos,yPos,size,size);//monster size is 32x32
     
   }//end display

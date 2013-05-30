@@ -80,8 +80,8 @@ void draw(){
       //BEGIN DISPLAY WALLS
       for (int i = 0; i < walls.length; i++){
         
-        walls[i].hit();
-        walls[i].display();
+        walls[i].hit();//initialize wall collision
+        walls[i].display();//display walls
         
       }
       //END DISPLAY WALLS
@@ -92,8 +92,9 @@ void draw(){
       playerLifebar.yPos2 = player.yPos+255;
       //END REFRESH PLAYER HP BAR
       
-      playerLifebar.display();
+      playerLifebar.display();//DISPLAY THE PLAYER LIFEBAR
       
+      //WHILE MOSNTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
       for (int i = 0; i < monsters.length; i++){
         
         if (monsters[i].living == true){
@@ -102,8 +103,8 @@ void draw(){
         }
         
       }
-      
-      if (monsters[0].living == true){
+      //PATROL FUNCTIONS
+      if (monsters[0].living == true){ 
         monsters[0].patrol(0,0,200,150);
       } 
       if (monsters[1].living == true){
@@ -113,8 +114,8 @@ void draw(){
         monsters[2].patrol(500,500,100,100);
       }
       
-      playerLevel.display();
-      playerXP.display();
+      playerLevel.display(); //display player level
+      playerXP.display(); //display player xp
       
       //DISPLAY MONSTER LIFEBAR
       for (int i = 0; i < monsters.length; i++){
