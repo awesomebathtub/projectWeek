@@ -44,6 +44,7 @@ class Bullet {
     }//end for
     
     //BEGIN BULLET/WALL HIT DETECT
+    /*
     for (int i = 0; i < walls.length; i++){
       
       if (xPos <= walls[i].x2 && xPos >= walls[i].x1 && yPos <= walls[i].y2 && yPos >= walls[i].y1){
@@ -53,7 +54,7 @@ class Bullet {
       }
       
     }//end bullet/wall hit detect
-    
+    */
   }//end shoot
   
 }//end of bullet class

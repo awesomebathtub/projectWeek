@@ -62,7 +62,7 @@ class Monster
     }//end if sighted == false
     
     else {
-      
+      speed = 4;
       ang = atan2 (player.yPos - yPos, player.xPos - xPos);
       xSpeed = speed*cos(ang);
       ySpeed = speed*sin(ang);
@@ -83,7 +83,7 @@ class Monster
   }//end patrol
   
   void hit (){
-    
+    /*
     for (int i = 0; i < walls.length; i++){
     
       //BEGIN MONSTER/WALL HIT DETECT
@@ -103,31 +103,35 @@ class Monster
         xPos = walls[i].x1 - size;
       }//end left edge
       //END MONSTER/WALL HIT
-      
+      */
       //BEGIN PLAYER/MONSTER HIT DETECT
       if (player.yPos < yPos+size && player.yPos > yPos+size-player.speed-1 && player.xPos < xPos+size && player.xPos+player.size > xPos){
-        player.yPos += speed*20;
+        player.yPos += speed*5;
         playerLifebar.health -= 10; 
+        player.countY -= speed*5;
       }//end bottom edge
       
       if (player.yPos+player.size > yPos && player.yPos+player.size < yPos+player.speed+1 && player.xPos < xPos+size && player.xPos + player.size > xPos){
-        player.yPos -= speed*20;
+        player.yPos -= speed*5;
         playerLifebar.health -= 10;
+        player.countY += speed*5;
       }//end top edge
       
       if (player.xPos < xPos+size && player.xPos > xPos+size-player.speed-1 && player.yPos < yPos+size && player.yPos+player.size > yPos){
-        player.xPos += speed*20;
+        player.xPos += speed*5;
         playerLifebar.health -= 10;
+        player.countX -= speed*5;
       }//end right edge
       
       if (player.xPos+player.size > xPos && player.xPos+player.size < xPos+player.speed+1 && player.yPos < yPos+size && player.yPos + player.size > yPos){
-        player.xPos -= speed*20;
+        player.xPos -= speed*5;
         playerLifebar.health -= 10;
+        player.countX += speed*5;
       }//end left edge
       //END PLAYER/MONSTER HIT
       
       
-    }//end for loop
+    //end for loop
     
   }
   

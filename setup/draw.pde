@@ -60,8 +60,8 @@ void draw(){
       player.move();
       player.follow();
       
-      image(ground_1,-200,-200);
-
+      image(ground_1,0,0);
+      
       for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
         
         Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
@@ -76,16 +76,7 @@ void draw(){
         }//end if
       
       }//end list constructor
-            
-      //BEGIN DISPLAY WALLS
-      for (int i = 0; i < walls.length; i++){
-        
-        walls[i].hit();//initialize wall collision
-        walls[i].display();//display walls
-        
-      }
-      //END DISPLAY WALLS
-            
+      
       //BEGIN REFRESH PLAYER HP BAR
       playerLifebar.xPos1 = player.xPos-50;
       playerLifebar.yPos1 = player.yPos+250; 
@@ -94,7 +85,7 @@ void draw(){
       
       playerLifebar.display();//DISPLAY THE PLAYER LIFEBAR
       
-      //WHILE MOSNTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
+      //WHILE MONSTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
       for (int i = 0; i < monsters.length; i++){
         
         if (monsters[i].living == true){
@@ -108,7 +99,7 @@ void draw(){
         monsters[0].patrol(0,0,200,150);
       } 
       if (monsters[1].living == true){
-        monsters[1].patrol(300,300,200,150);
+        monsters[1].patrol(900,900,200,150);
       }
       if (monsters[2].living == true){
         monsters[2].patrol(500,500,100,100);
@@ -124,7 +115,7 @@ void draw(){
           
           monsterLifebar[i].display();    
           monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
-          monsterLifebar[i].yPos1 = monsters[i].yPos - 15;
+          monsterLifebar[i].yPos1 = monsters[i].yPos - 10;
           monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
         
         }
@@ -144,14 +135,6 @@ void draw(){
       
       //END MONSTER DEATH
       
-      //BEGIN DISPLAY WALLS
-      for (int i = 0; i < walls.length; i++){
-        
-        walls[i].display();
-        
-      }
-      //END DISPLAY WALLS
-      
       //BEGIN LEVEL UP
       if(playerXP.XP >=100){
         playerXP.XP = playerXP.XP - 100;
@@ -159,12 +142,35 @@ void draw(){
       }
       //END LEVEL UP      
       
+      //DRAW PLAYER MOVEMENT
+      //STOP
+      if ( playerMovement == 0 && keyPressed == false){
+      image(playerStop, player.xPos, player.yPos);
+      }
+      //UP
+      if ( playerMovement == 1 && keyPressed == true){
+       image(playerUp, player.xPos, player.yPos);
+      }
+      //LEFT
+      if ( playerMovement == 2 && keyPressed == true){
+         image(playerLeft, player.xPos, player.yPos);
+      }
+      //DOWN
+      if ( playerMovement == 3 && keyPressed == true){
+         image(playerDown, player.xPos, player.yPos);
+      }
+      //RIGHT
+      if ( playerMovement == 4 && keyPressed == true){
+         image(playerRight, player.xPos, player.yPos);
+      }
+      //END DRAW PLAYER MOVEMENT
+      
+      //DRAW MONSTER IMAGE
       for (int i = 0; i < monsters.length; i++){
         if (monsters[i].living == true){
           image(monsterSprite,monsters[i].xPos,monsters[i].yPos);
         }
       }
-      
       
       //end gameState == true
       
@@ -175,6 +181,41 @@ void draw(){
       
       player.display();
       
+      //BEGIN DISPLAY LIGHTS
+      for ( int i = 0; i < lights.length; i++){
+        
+        lights[i].on();
+      }
+      //END DISPLAY LIGHTS
+     for (int i = 0; i< bounds.length; i++){
+       bounds[i].display();
+     }
+     // if(playerLifebar.xPos1 !=
+     
+     boolean col = false;
+     for (int i = 0; i < bounds.length; i++){
+       if(player.xPos <= bounds[i].x1 && col == false && left == true){
+         player.xPos = bounds[i].x1;
+         player.countX -= player.speed;
+         col = true;
+       }
+       if(player.xPos + player.size >= bounds[i].x2 && col == false && right ==true){
+         player.xPos = bounds[i].x2-player.size;
+         player.countX += player.speed;
+         col = true;
+       }
+       if(player.yPos <= bounds[i].y1 && col == false && up == true){
+         player.yPos = bounds[i].y1;
+         player.countY -= player.speed;
+         col = true;
+       }
+       if(player.yPos + player.size >= bounds[i].y2 && col == false && dn == true){
+         player.yPos = bounds[i].y2-player.size;
+         player.countY += player.speed;
+         col = true;
+       }
+     }//end for
+         
   }//END IF PLAYERALIVE == TRUE
   
     if(playerAlive == false){

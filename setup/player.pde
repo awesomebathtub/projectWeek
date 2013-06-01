@@ -8,7 +8,7 @@ class Player {
   float xPos;
   float yPos;
   float speed;
-  float size = 16;
+  float size = 32;
   int ammo;
   float countX;
   float countY;
@@ -27,8 +27,9 @@ class Player {
   void display() {
     
     rectMode(CORNER);
-    fill(0,255,255);
-    rect(xPos,yPos,size,size);
+    noStroke();
+    fill(0,255,255,0);
+    rect(xPos,yPos,size,size);//player size is 32x32
     text(ammo,xPos+250,yPos+250);
     
   }//end display
