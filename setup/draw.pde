@@ -2,32 +2,12 @@ void draw(){
 
   //OPENING SCREEN CODE BEGINS HERE**********************************************
   if(gameRunning == false){
-    background(0);
+    background(255);
     image(loadScreen, 0, 0);
     music.play();
     
     textSize(30);
     textAlign(CENTER,CENTER);
-    
-    fill(0);
-    text("SPACE-SHOOTER", (width/2)-2,(height/6)-2);
-    fill(255);
-    text("SPACE-SHOOTER", width/2,height/6);
-    
-    fill(0);
-    text("DUNGEON-CRAWLER", (width/2)-2, (height/6)+28);
-    fill(255);
-    text("DUNGEON-CRAWLER", width/2, (height/6)+30);
-    
-    fill(0);
-    text("MONSTER-KILLER GAME", (width/2)-2, (height/6)+58);
-    fill(255);
-    text("MONSTER-KILLER GAME", width/2, (height/6)+60);
-    
-    fill(0);
-    text("PRESS SPACE TO PLAY", (width/2)-2, (height/2)-2);
-    fill(255);
-    text("PRESS SPACE TO PLAY", width/2, height/2);
     
     fill(0);
     textSize(20);
@@ -37,7 +17,7 @@ void draw(){
     text("MUSIC BY LIDSKY",350,400);
     
     textSize(10);
-    fill(255);
+    fill(0);
     rotate(0.5);
     text("Created by Alec Ray and Julian Bloch", width/2,550);
     
@@ -55,13 +35,11 @@ void draw(){
   //GAME SCREEN CODE BEGINS HERE**************************************************
   if(gameRunning == true){
     if(playerAlive == true){
-      background(0);
+      background(40,170,40);
           
       player.move();
       player.follow();
-      
-      image(ground_1,0,0);
-      
+
       for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
         
         Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
@@ -77,6 +55,22 @@ void draw(){
       
       }//end list constructor
       
+      //BEGIN DISPLAY WALLS
+      for (int i = 0; i < walls.length; i++){
+        
+        walls[i].hit();//initialize wall collision
+        walls[i].display();//display walls
+        
+      }
+      //END DISPLAY WALLS
+
+      //BEGIN DISPLAY FLOWERS
+      for (int i = 0; i < flowers.length; i++){
+        
+        flowers[i].display();
+      
+      }
+      //END DISPLAY FLOWERS
       //BEGIN REFRESH PLAYER HP BAR
       playerLifebar.xPos1 = player.xPos-50;
       playerLifebar.yPos1 = player.yPos+250; 
@@ -187,35 +181,22 @@ void draw(){
         lights[i].on();
       }
       //END DISPLAY LIGHTS
-     for (int i = 0; i< bounds.length; i++){
-       bounds[i].display();
-     }
+
      // if(playerLifebar.xPos1 !=
-     
-     boolean col = false;
-     for (int i = 0; i < bounds.length; i++){
-       if(player.xPos <= bounds[i].x1 && col == false && left == true){
-         player.xPos = bounds[i].x1;
-         player.countX -= player.speed;
-         col = true;
-       }
-       if(player.xPos + player.size >= bounds[i].x2 && col == false && right ==true){
-         player.xPos = bounds[i].x2-player.size;
-         player.countX += player.speed;
-         col = true;
-       }
-       if(player.yPos <= bounds[i].y1 && col == false && up == true){
-         player.yPos = bounds[i].y1;
-         player.countY -= player.speed;
-         col = true;
-       }
-       if(player.yPos + player.size >= bounds[i].y2 && col == false && dn == true){
-         player.yPos = bounds[i].y2-player.size;
-         player.countY += player.speed;
-         col = true;
-       }
-     }//end for
-         
+       
+      //BEGIN DISPLAY FENCES
+      for (int i = 0; i < fences.length; i++){
+        
+        fences[i].display();
+      }
+      //END DISPLAY FENCES
+      
+      //BEGIN DISPLAY TREES
+      for (int i = 0; i < trees.length; i++){
+        
+        trees[i].display();
+      }
+      //END DISPLAY TREES
   }//END IF PLAYERALIVE == TRUE
   
     if(playerAlive == false){

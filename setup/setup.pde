@@ -4,12 +4,14 @@ import gifAnimation.*;
 
 //IMAGE DECLARE*************
 PImage loadScreen;
-PImage ground_1;
 
 PImage wall_1;
 
 PImage monsterSprite;
 
+PImage tree_1;
+PImage flower_1;
+PImage fence_1; 
 
 PImage[] playerStopPImage;
 PImage[] playerUpPImage;
@@ -41,13 +43,22 @@ AudioPlayer noShootSound;
 Player player;
 
 ArrayList bullets;
+
 Monster[] monsters = new Monster[10];
+
 Monster temp;
 
-BoundingBox[] bounds = new BoundingBox[1];
-
 Lifebar playerLifebar;
+
 Lifebar[] monsterLifebar = new Lifebar[monsters.length];
+
+Tree[] trees = new Tree[50];
+
+Flower[] flowers = new Flower[50];
+
+Wall[] walls = new Wall[100];
+
+Fence[] fences = new Fence[50];
 
 Expbar playerXP;
 Level playerLevel;
@@ -99,12 +110,15 @@ void setup(){
   
   
   //***************************LOAD IMAGES**************************
-  loadScreen = loadImage("gfx/textures/loadScreen.jpg");
-  ground_1 = loadImage("gfx/textures/ground_1.jpg");
+  loadScreen = loadImage("gfx/textures/loadScreen.gif");
   
   monsterSprite = loadImage("gfx/enemy/monsterSprite.gif");
+ 
+  tree_1 = loadImage("gfx/textures/tree_1.gif");
   
+  flower_1 = loadImage("gfx/textures/flower_1.gif");
   
+  fence_1 = loadImage("gfx/textures/fence_1.gif");
   //*****************************END LOAD IMAGES*********************
   
   frameRate(60);
@@ -122,12 +136,21 @@ void setup(){
   playerLifebar = new Lifebar(player.xPos-50, player.yPos+250, player.xPos+50, player.yPos-250, 100,100);
   playerXP = new Expbar();
   playerLevel = new Level(1);
-  
-  
-  for (int i = 0; i< bounds.length; i++){
-    bounds[i] = new BoundingBox (0,0,400,400);
-  }//end bounds for
-  
+  for (int i = 0; i < fences.length; i++){
+    fences[i] = new Fence (0 + (i*32), 0);
+    walls[i+50] = new Wall (fences[i].xPos, fences[i].yPos + 10, fences[i].xPos+32, fences[i].yPos + 20);
+  }
+  for (int i = 0; i < flowers.length; i++){
+    int rand1 = int(random(-1000,1000));
+    int rand2 = int(random(-1000,1000));
+    flowers[i] = new Flower (rand1, rand2);
+  }
+  for (int i = 0; i < trees.length; i++){
+    int rand1 = int(random(-1000,1000));
+    int rand2 = int(random(-1000,1000));
+    trees[i] = new Tree (rand1, rand2);
+    walls[i] = new Wall (trees[i].xPos+20, trees[i].yPos+90, trees[i].xPos+100, trees[i].yPos+100);
+  }
   for (int i = 0; i < 10; i++){    
     monsters[i] = new Monster (0.5, 64);    
   }//end for

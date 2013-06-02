@@ -19,9 +19,9 @@ class Bullet {
   }//end of constructor
   
   void display() {
-    
+    stroke(1);
     fill (255);
-    ellipse(xPos, yPos,5,5);
+    line(xPos, yPos,xPos+5,yPos+5);
     
   }//end of display
   
