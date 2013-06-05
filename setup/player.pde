@@ -30,6 +30,7 @@ class Player {
     noStroke();
     fill(0,255,255,0);
     rect(xPos,yPos,size,size);//player size is 32x32
+    fill(0);
     text(ammo,xPos+250,yPos+250);
     
   }//end display

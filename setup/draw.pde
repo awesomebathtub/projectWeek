@@ -1,31 +1,63 @@
+float xx = 0;
+
 void draw(){
 
   //OPENING SCREEN CODE BEGINS HERE**********************************************
   if(gameRunning == false){
-    background(255);
-    image(loadScreen, 0, 0);
+    background(40,170,40);
+    
+    /*********************************************/
+    for (int i = 0; i < flowers.length; i++){
+        flowershadows[i].display();
+        flowers[i].display();
+      }
+    for (int i = 0; i < trees.length; i++){
+        
+        trees[i].display();
+      }
+    for (int i = 0; i < fences.length; i++){
+        
+        fences[i].display();
+      }
+    for (int i = 0; i < clouds.length; i++){
+        
+        clouds[i].display();
+        if(clouds[i].xPos <= 10000){
+        clouds[i].xPos = clouds[i].xPos + clouds[i].speed;
+        }
+    else{
+          clouds[i].xPos = -5000;
+        }
+      }
+    /*********************************************/  
+    
+    image(titleScreen, 0, 0);
     music.play();
     
     textSize(30);
     textAlign(CENTER,CENTER);
+    if(xx <= 601){
+      image(tomahawk, xx, 500);
+      xx+=1;
+    }else{
+      xx=0;
+    }
     
     fill(0);
-    textSize(20);
-    rotate(-0.5);
-    text("MUSIC BY LIDSKY",348,398);
-    fill(255,255,0);
-    text("MUSIC BY LIDSKY",350,400);
-    
     textSize(10);
-    fill(0);
-    rotate(0.5);
-    text("Created by Alec Ray and Julian Bloch", width/2,550);
+    text("© Alec Ray 2013", width-43, height-10);
     
+    textSize(20);
+    fill(255);
+    text("Press Space to Play", (width/2)+2, 501);
+    fill(0);
+    text("Press Space to Play", width/2, 500);
+    translate(10,0);
       if(keyPressed && (key == ' ')){
         gameRunning = true;
         music.close();
         minim.stop();
-      }//end of if mousePressed
+      }//end of if keyPressed
       
   }//end gameState == 0
   //OPENING SCREEN CODE ENDS HERE**************************************************
@@ -36,7 +68,7 @@ void draw(){
   if(gameRunning == true){
     if(playerAlive == true){
       background(40,170,40);
-          
+      
       player.move();
       player.follow();
 
@@ -66,8 +98,9 @@ void draw(){
 
       //BEGIN DISPLAY FLOWERS
       for (int i = 0; i < flowers.length; i++){
-        
+        flowershadows[i].display();
         flowers[i].display();
+       
       
       }
       //END DISPLAY FLOWERS
@@ -76,8 +109,6 @@ void draw(){
       playerLifebar.yPos1 = player.yPos+250; 
       playerLifebar.yPos2 = player.yPos+255;
       //END REFRESH PLAYER HP BAR
-      
-      playerLifebar.display();//DISPLAY THE PLAYER LIFEBAR
       
       //WHILE MONSTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
       for (int i = 0; i < monsters.length; i++){
@@ -89,19 +120,21 @@ void draw(){
         
       }
       //PATROL FUNCTIONS
-      if (monsters[0].living == true){ 
+      for(int i = 0; i<monsters.length; i++){
+        if (monsters[i].living == true){
+          monsters[i].patrol(monsters[i].initxPos,monsters[i].inityPos,200,200);
+        }
+      }
+      /*if (monsters[0].living == true){ 
         monsters[0].patrol(0,0,200,150);
       } 
       if (monsters[1].living == true){
-        monsters[1].patrol(900,900,200,150);
+        monsters[1].patrol(300,300,200,150);
       }
       if (monsters[2].living == true){
         monsters[2].patrol(500,500,100,100);
-      }
-      
-      playerLevel.display(); //display player level
-      playerXP.display(); //display player xp
-      
+      }*/
+
       //DISPLAY MONSTER LIFEBAR
       for (int i = 0; i < monsters.length; i++){
         
@@ -138,6 +171,7 @@ void draw(){
       
       //DRAW PLAYER MOVEMENT
       //STOP
+      
       if ( playerMovement == 0 && keyPressed == false){
       image(playerStop, player.xPos, player.yPos);
       }
@@ -157,15 +191,16 @@ void draw(){
       if ( playerMovement == 4 && keyPressed == true){
          image(playerRight, player.xPos, player.yPos);
       }
+      
       //END DRAW PLAYER MOVEMENT
       
       //DRAW MONSTER IMAGE
-      for (int i = 0; i < monsters.length; i++){
+      /*for (int i = 0; i < monsters.length; i++){
         if (monsters[i].living == true){
           image(monsterSprite,monsters[i].xPos,monsters[i].yPos);
         }
       }
-      
+      */
       //end gameState == true
       
       //BEGIN DEATH      
@@ -176,10 +211,10 @@ void draw(){
       player.display();
       
       //BEGIN DISPLAY LIGHTS
-      for ( int i = 0; i < lights.length; i++){
+      /*for ( int i = 0; i < lights.length; i++){
         
         lights[i].on();
-      }
+      }*/
       //END DISPLAY LIGHTS
 
      // if(playerLifebar.xPos1 !=
@@ -191,12 +226,51 @@ void draw(){
       }
       //END DISPLAY FENCES
       
+      //BEGI NDISPLAY CLOUD SHADOWS (separate from display clouds so the shadows go behind the trees when necessary)
+      for (int i = 0; i < cloudshadows.length; i++){
+        
+        cloudshadows[i].display();
+        if(clouds[i].xPos <= 10000){
+        cloudshadows[i].xPos = cloudshadows[i].xPos + cloudshadows[i].speed;
+        }
+        else{
+          cloudshadows[i].xPos = -5000;
+        }
+      }
+      //END DISPLAY CLOUD SHADOWS
+      
       //BEGIN DISPLAY TREES
       for (int i = 0; i < trees.length; i++){
         
         trees[i].display();
       }
       //END DISPLAY TREES
+      
+      //BEGIN DISPLAY CLOUDS (separate from display cloud shadows so the shadows go behind the trees when necessary)
+      for (int i = 0; i < clouds.length; i++){
+        
+        clouds[i].display();
+        if(clouds[i].xPos <= 10000){
+        clouds[i].xPos = clouds[i].xPos + clouds[i].speed;
+        }
+        else{
+          clouds[i].xPos = -5000;
+        }
+      }
+      //END DISPLAY CLOUDS
+      
+      
+      //ALWAYS MAKE THIS DISPLAY LAST SO IT'S ON TOP OF EVERYTHING ELSE
+      playerLevel.display(); //display player level
+      playerXP.display(); //display player xp
+      playerLifebar.display();//DISPLAY THE PLAYER LIFEBAR
+      
+      //reticle.display();
+      
+      if (player.ammo == 0) {
+    image(noMoreTomahawks, player.xPos-300,player.yPos-300);    
+    noMoreTomahawks.noLoop();
+  }
   }//END IF PLAYERALIVE == TRUE
   
     if(playerAlive == false){

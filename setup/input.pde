@@ -50,14 +50,9 @@ void mouseReleased () {
 
   if (player.ammo > 0) {
     bullets.add (new Bullet (10));
-    bulletSound = bulletMinim.loadFile("sfx/laser_bullet.mp3");
+    bulletSound = bulletMinim.loadFile("sfx/tomahawkWoosh.mp3");
     bulletSound.play();
     player.ammo-=1;
-  }
-
-  if (player.ammo == 0) {
-    noShootSound = noShootMinim.loadFile("sfx/noShoot.mp3");
-    noShootSound.play();
   }
 }//end mouseReleased
 

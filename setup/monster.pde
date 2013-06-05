@@ -1,5 +1,7 @@
 class Monster
 {
+  float initxPos;
+  float inityPos;
   float xPos;
   float yPos;
   float speed;
@@ -7,26 +9,31 @@ class Monster
   float ySpeed;
   float size;//monster size is 32x32
   float ang;
+  float xPatrolReg;
+  float yPatrolReg;
   boolean sighted = false;
   boolean living = true;
   
   //inputs are monster speed, patrol box x, patrol box y, patrol box width, patrol box height, monster size
-  Monster(float speed_, float size_) {
+  Monster(float speed_, float size_, float xPos_, float yPos_ ) {
     
     speed = speed_;
     xSpeed = speed;
     ySpeed = 0;
     size = size_;//monster size is 32x32
-    xPos = width+size+1;
-    yPos = height+size+1;
-
+    xPos = xPos_;
+    yPos = yPos_;
+    initxPos = xPos_;
+    inityPos = yPos_;
     
+
   }//end of constructor
   
   void display() {
     noStroke();
     rectMode (CORNER);
     fill(255,0,0,0);
+    image(monster_1, xPos, yPos);
     rect(xPos,yPos,size,size);//monster size is 32x32
     
   }//end display
@@ -62,7 +69,7 @@ class Monster
     }//end if sighted == false
     
     else {
-      speed = 4;
+      speed = 3;
       ang = atan2 (player.yPos - yPos, player.xPos - xPos);
       xSpeed = speed*cos(ang);
       ySpeed = speed*sin(ang);
