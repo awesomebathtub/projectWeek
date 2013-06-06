@@ -1,12 +1,3 @@
-void keyTyped () {
-  
-  if(playerAlive == false && (key == 'r' || key == 'R')){
-    gameRunning = false;
-    loop ();
-  }
-  
-}//end keyTyped
-
 void keyPressed () {
 
   if (key == 'w' || key == 'W') {
@@ -30,6 +21,11 @@ void keyPressed () {
     monsters[i].living = false;
     }
   }
+  if(playerAlive == false && (key == 'r' || key == 'R')){
+    gameRunning = false;
+    playerAlive = true;
+    loop ();
+  }
 }//end of keyPressed
 
 void keyReleased () {
@@ -49,6 +45,10 @@ void keyReleased () {
   if (key == 'd' || key == 'D') {
     right = false;
     playerMovement = 0;
+  }
+    if(playerAlive == false && (key == 'r' || key == 'R')){
+    gameRunning = false;
+    loop ();
   }
 }//end of keyReleased
 

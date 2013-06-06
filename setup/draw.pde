@@ -52,14 +52,7 @@ void draw(){
     text("Press Space to Play", (width/2)+2, 501);
     fill(0);
     text("Press Space to Play", width/2, 500);
-    translate(10,0);
-      if(keyPressed && (key == ' ')){
-        gameRunning = true;
-        playerAlive = true;
-        //music.close();
-        minim.stop();
-      }//end of if keyPressed
-      
+    translate(10,0);      
   }//end gameState == 0
   //OPENING SCREEN CODE ENDS HERE**************************************************
   
@@ -291,6 +284,9 @@ void draw(){
       text("GAME OVER", width/2, height/2);
       text ("PRESS R TO RESTART", width/2, height/2 + 18);
       noLoop();
+      if(playerLevel.level > 1){
+      playerLevel.level -=1;
+      }
     }//END IF PLAYERALIVE == FALSE
   }//END IF GAME RUNNING
 }//END DRAW
