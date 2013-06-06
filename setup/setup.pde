@@ -80,6 +80,7 @@ Expbar playerXP;
 Level playerLevel;
 
 boolean gameRunning = false;
+boolean playerAlive;
 
 int playerMovement = 0;
 

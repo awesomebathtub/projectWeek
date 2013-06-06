@@ -32,7 +32,7 @@ void draw(){
     /*********************************************/  
     
     image(titleScreen, 0, 0);
-    music.play();
+    //music.play();
     
     textSize(30);
     textAlign(CENTER,CENTER);
@@ -55,14 +55,14 @@ void draw(){
     translate(10,0);
       if(keyPressed && (key == ' ')){
         gameRunning = true;
-        music.close();
+        playerAlive = true;
+        //music.close();
         minim.stop();
       }//end of if keyPressed
       
   }//end gameState == 0
   //OPENING SCREEN CODE ENDS HERE**************************************************
   
-  boolean playerAlive = true;
   
   //GAME SCREEN CODE BEGINS HERE**************************************************
   if(gameRunning == true){
@@ -70,55 +70,15 @@ void draw(){
       background(40,170,40);
       
       player.move();
-      player.follow();
-
-      for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
-        
-        Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
-        
-        bullet.display();
-        bullet.shoot();
-        
-        if (bullet.xPos < -1000 || bullet.xPos > width+1000 || bullet.yPos < -1000 || bullet.yPos > height+1000 || bullet.hit == true){//removes bullets when they leave the screen
-          
-          bullets.remove(i);
-          
-        }//end if
       
-      }//end list constructor
-      
-      //BEGIN DISPLAY WALLS
       for (int i = 0; i < walls.length; i++){
         
         walls[i].hit();//initialize wall collision
-        walls[i].display();//display walls
         
       }
-      //END DISPLAY WALLS
+      
+      player.follow();
 
-      //BEGIN DISPLAY FLOWERS
-      for (int i = 0; i < flowers.length; i++){
-        flowershadows[i].display();
-        flowers[i].display();
-       
-      
-      }
-      //END DISPLAY FLOWERS
-      //BEGIN REFRESH PLAYER HP BAR
-      playerLifebar.xPos1 = player.xPos-50;
-      playerLifebar.yPos1 = player.yPos+250; 
-      playerLifebar.yPos2 = player.yPos+255;
-      //END REFRESH PLAYER HP BAR
-      
-      //WHILE MONSTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
-      for (int i = 0; i < monsters.length; i++){
-        
-        if (monsters[i].living == true){
-          monsters[i].display();
-          monsters[i].hit();
-        }
-        
-      }
       //PATROL FUNCTIONS
       for(int i = 0; i<monsters.length; i++){
         if (monsters[i].living == true){
@@ -134,7 +94,17 @@ void draw(){
       if (monsters[2].living == true){
         monsters[2].patrol(500,500,100,100);
       }*/
-
+      
+      //WHILE MONSTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
+      for (int i = 0; i < monsters.length; i++){
+        
+        if (monsters[i].living == true){
+          monsters[i].display();
+          monsters[i].hit();
+        }
+        
+      }
+      
       //DISPLAY MONSTER LIFEBAR
       for (int i = 0; i < monsters.length; i++){
         
@@ -161,6 +131,44 @@ void draw(){
       }//end for
       
       //END MONSTER DEATH
+
+      for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
+        
+        Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
+        
+        bullet.display();
+        bullet.shoot();
+        
+        if (bullet.hit == true || bullet.xPos > player.xPos + width/2 || bullet.xPos < player.xPos - width/2 || bullet.yPos > player.yPos + height/2 || bullet.yPos < player.yPos - height/2){
+        //removes bullets when they hit an object or leave the screen
+          
+          bullets.remove(i);
+          
+        }//end if
+      
+      }//end list constructor
+      
+      //BEGIN DISPLAY WALLS
+      for (int i = 0; i < walls.length; i++){
+        
+        walls[i].display();//display walls
+        
+      }
+      //END DISPLAY WALLS
+
+      //BEGIN DISPLAY FLOWERS
+      for (int i = 0; i < flowers.length; i++){
+        flowershadows[i].display();
+        flowers[i].display();
+       
+      
+      }
+      //END DISPLAY FLOWERS
+      //BEGIN REFRESH PLAYER HP BAR
+      playerLifebar.xPos1 = player.xPos-50;
+      playerLifebar.yPos1 = player.yPos+250; 
+      playerLifebar.yPos2 = player.yPos+255;
+      //END REFRESH PLAYER HP BAR
       
       //BEGIN LEVEL UP
       if(playerXP.XP >=100){
@@ -264,6 +272,7 @@ void draw(){
       playerLevel.display(); //display player level
       playerXP.display(); //display player xp
       playerLifebar.display();//DISPLAY THE PLAYER LIFEBAR
+      player.ammoDisplay();
       
       //reticle.display();
       
@@ -280,6 +289,7 @@ void draw(){
       textSize(20);
       translate(-player.countX,-player.countY);
       text("GAME OVER", width/2, height/2);
+      text ("PRESS R TO RESTART", width/2, height/2 + 18);
       noLoop();
     }//END IF PLAYERALIVE == FALSE
   }//END IF GAME RUNNING

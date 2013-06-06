@@ -30,8 +30,6 @@ class Player {
     noStroke();
     fill(0,255,255,0);
     rect(xPos,yPos,size,size);//player size is 32x32
-    fill(0);
-    text(ammo,xPos+250,yPos+250);
     
   }//end display
   
@@ -53,14 +51,21 @@ class Player {
       xPos += speed;
     }
     
-    countX += tempX - xPos;
-    countY += tempY - yPos;
               
   }//end of move function
   
   void follow() {//function for the "camera" to follow the player
     
+    countX += tempX - xPos;
+    countY += tempY - yPos;
     translate (countX, countY);
+    
+  }
+  
+  void ammoDisplay (){
+    
+    fill(0);
+    text(ammo,xPos+250,yPos+250);
     
   }
   

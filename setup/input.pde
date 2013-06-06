@@ -1,4 +1,10 @@
 void keyTyped () {
+  
+  if(playerAlive == false && (key == 'r' || key == 'R')){
+    gameRunning = false;
+    loop ();
+  }
+  
 }//end keyTyped
 
 void keyPressed () {
