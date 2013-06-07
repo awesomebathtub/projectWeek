@@ -21,8 +21,7 @@ class Player {
     yPos = yPos_;
     speed = speed_;
     ammo = ammo_;
-    
-  }//end of constructor
+}//end of constructor
   
   void display() {
     

@@ -6,7 +6,6 @@ void draw(){
   if(gameRunning == false){
     background(40,170,40);
     
-    /*********************************************/
     for (int i = 0; i < flowers.length; i++){
         flowershadows[i].display();
         flowers[i].display();
@@ -28,8 +27,7 @@ void draw(){
     else{
           clouds[i].xPos = -5000;
         }
-      }
-    /*********************************************/  
+      } 
     
     image(titleScreen, 0, 0);
     //music.play();
@@ -37,7 +35,12 @@ void draw(){
     textSize(30);
     textAlign(CENTER,CENTER);
     if(xx <= 601){
-      image(tomahawk, xx, 500);
+      if(eqWep == "tomahawk"){
+      image(tomahawkGif, xx, 500);
+      }
+      if(eqWep == "sword"){
+      image(swordGif, xx, 500);
+      }
       xx+=1;
     }else{
       xx=0;
@@ -53,82 +56,48 @@ void draw(){
     fill(0);
     text("Press Space to Play", width/2, 500);
     translate(10,0);      
-  }//end gameState == 0
-  //OPENING SCREEN CODE ENDS HERE**************************************************
-  
+  }//end gamestate
   
   //GAME SCREEN CODE BEGINS HERE**************************************************
+  
   if(gameRunning == true){
     if(playerAlive == true){
+      
       background(40,170,40);
       
       player.move();
+      
       
       for (int i = 0; i < walls.length; i++){
         
         walls[i].hit();//initialize wall collision
         
       }
-      
       player.follow();
-
-      //PATROL FUNCTIONS
-      for(int i = 0; i<monsters.length; i++){
+      //MONSTER PATROL DISPLAY HIT & LIFEBAR DISPLAY
+      for (int i = 0; i < monsters.length; i++){
+        
         if (monsters[i].living == true){
           monsters[i].patrol(monsters[i].initxPos,monsters[i].inityPos,200,200);
-        }
-      }
-      /*if (monsters[0].living == true){ 
-        monsters[0].patrol(0,0,200,150);
-      } 
-      if (monsters[1].living == true){
-        monsters[1].patrol(300,300,200,150);
-      }
-      if (monsters[2].living == true){
-        monsters[2].patrol(500,500,100,100);
-      }*/
-      
-      //WHILE MONSTERS ARE LIVING DISPLAY THEM AND INITIALIZE THE HIT MODULE
-      for (int i = 0; i < monsters.length; i++){
-        
-        if (monsters[i].living == true){
           monsters[i].display();
           monsters[i].hit();
-        }
-        
-      }
-      
-      //DISPLAY MONSTER LIFEBAR
-      for (int i = 0; i < monsters.length; i++){
-        
-        if (monsters[i].living == true){
-          
           monsterLifebar[i].display();    
           monsterLifebar[i].xPos1 = monsters[i].xPos - 10;
           monsterLifebar[i].yPos1 = monsters[i].yPos - 10;
           monsterLifebar[i].yPos2 = monsters[i].yPos - 5;
-        
         }
-      
       }
-      
-      //BEGIN MONSTER DEATH
+
+      //MONSTER DEATH
       for (int i = 0; i < monsters.length; i++){
-          
         if (monsterLifebar[i].health <= 0){
-            
           monsters[i].death(i);
-          
-          
         }//end if
       }//end for
       
-      //END MONSTER DEATH
-
       for (int i = 0; i < bullets.size(); i++){//constructs a dynamic list of bullets
-        
         Bullet bullet = (Bullet) bullets.get(i); //casts the ArrayList slots to the type Bullet
-        
+       
         bullet.display();
         bullet.shoot();
         
@@ -136,33 +105,25 @@ void draw(){
         //removes bullets when they hit an object or leave the screen
           
           bullets.remove(i);
-          
         }//end if
-      
       }//end list constructor
       
       //BEGIN DISPLAY WALLS
       for (int i = 0; i < walls.length; i++){
-        
         walls[i].display();//display walls
-        
       }
-      //END DISPLAY WALLS
 
       //BEGIN DISPLAY FLOWERS
       for (int i = 0; i < flowers.length; i++){
         flowershadows[i].display();
-        flowers[i].display();
-       
-      
+        flowers[i].display(); 
       }
-      //END DISPLAY FLOWERS
+      
       //BEGIN REFRESH PLAYER HP BAR
       playerLifebar.xPos1 = player.xPos-50;
       playerLifebar.yPos1 = player.yPos+250; 
       playerLifebar.yPos2 = player.yPos+255;
-      //END REFRESH PLAYER HP BAR
-      
+
       //BEGIN LEVEL UP
       if(playerXP.XP >=100){
         playerXP.XP = playerXP.XP - 100;
@@ -172,7 +133,6 @@ void draw(){
       
       //DRAW PLAYER MOVEMENT
       //STOP
-      
       if ( playerMovement == 0 && keyPressed == false){
       image(playerStop, player.xPos, player.yPos);
       }
@@ -194,19 +154,11 @@ void draw(){
       }
       
       //END DRAW PLAYER MOVEMENT
-      
-      //DRAW MONSTER IMAGE
-      /*for (int i = 0; i < monsters.length; i++){
-        if (monsters[i].living == true){
-          image(monsterSprite,monsters[i].xPos,monsters[i].yPos);
-        }
-      }
-      */
-      //end gameState == true
-      
+            
       //BEGIN DEATH      
       if(playerLifebar.health <= 0){
-        playerAlive = false;
+        playerAlive = false;   
+        player.ammo = 20;     
       }//end if playerLifebar
       
       player.display();
@@ -226,8 +178,13 @@ void draw(){
         fences[i].display();
       }
       //END DISPLAY FENCES
-      
-      //BEGI NDISPLAY CLOUD SHADOWS (separate from display clouds so the shadows go behind the trees when necessary)
+      //BEGIN DISPLAY WEAPON BOXES
+      for (int i = 0; i < weaponBoxes.length; i++){
+        
+        weaponBoxes[i].display();
+        weaponBoxes[i].pickUp();
+      }
+      //BEGIN DISPLAY CLOUD SHADOWS (separate from display clouds so the shadows go behind the trees when necessary)
       for (int i = 0; i < cloudshadows.length; i++){
         
         cloudshadows[i].display();
@@ -244,6 +201,10 @@ void draw(){
       for (int i = 0; i < trees.length; i++){
         
         trees[i].display();
+      }
+      for (int i = 0; i < healthboosts.length; i++){
+        healthboosts[i].display();
+        healthboosts[i].pickUp();
       }
       //END DISPLAY TREES
       
@@ -284,9 +245,6 @@ void draw(){
       text("GAME OVER", width/2, height/2);
       text ("PRESS R TO RESTART", width/2, height/2 + 18);
       noLoop();
-      if(playerLevel.level > 1){
-      playerLevel.level -=1;
-      }
     }//END IF PLAYERALIVE == FALSE
   }//END IF GAME RUNNING
 }//END DRAW

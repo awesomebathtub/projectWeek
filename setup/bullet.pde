@@ -20,8 +20,27 @@ class Bullet {
   
   void display() {
     fill (255);
-    image(tomahawk,xPos,yPos);
-    
+    if(eqWep == "tomahawk"){
+      image(tomahawkGif,xPos,yPos);
+    }
+    if(eqWep == "sword"){
+      image(swordGif,xPos,yPos);
+    }
+    if(eqWep == "hammer"){
+      image(hammerGif,xPos,yPos);
+    }
+    if(eqWep == "harpoon"){
+      image(harpoonGif,xPos,yPos);
+    }
+    if(eqWep == "spear"){
+      image(spearGif,xPos,yPos);
+    }
+    if(eqWep == "axe"){
+      image(axeGif,xPos,yPos);
+    }
+    if(eqWep == "mace"){
+      image(maceGif,xPos,yPos);
+    }
   }//end of display
   
   void shoot() {
@@ -32,11 +51,43 @@ class Bullet {
     //BEGIN BULLET/MONSTER HIT DETECTION
     for(int i = 0; i < monsters.length; i++){
       
-      if(xPos <= monsters[i].xPos+monsters[i].size && xPos >= monsters[i].xPos && yPos <= monsters[i].yPos+monsters[i].size && monsters[i].yPos >= monsters[i].yPos ){
-        
-          monsterLifebar[i].health -= 10;
-          monsters[i].sighted = true;
-          hit = true;
+      if(xPos <= monsters[i].xPos + 32 && xPos >= monsters[i].xPos && yPos <= monsters[i].yPos + 32 && yPos >= monsters[i].yPos ){
+          if(eqWep == "tomahawk"){
+            monsterLifebar[i].health -= tomahawk.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+          if(eqWep == "sword"){
+            monsterLifebar[i].health -= sword.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+          if(eqWep == "hammer"){
+            monsterLifebar[i].health -= hammer.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+          if(eqWep == "harpoon"){
+            monsterLifebar[i].health -= harpoon.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+          if(eqWep == "spear"){
+            monsterLifebar[i].health -= spear.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+          if(eqWep == "axe"){
+            monsterLifebar[i].health -= axe.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+          if(eqWep == "mace"){
+            monsterLifebar[i].health -= mace.damage;
+            monsters[i].sighted = true;
+            hit = true;
+          }
+            
           
       }//end if
       

@@ -7,8 +7,8 @@ class Monster
   float speed;
   float xSpeed;
   float ySpeed;
-  float size;//monster size is 32x32
   float ang;
+  float size;
   float xPatrolReg;
   float yPatrolReg;
   boolean sighted = false;
@@ -20,7 +20,7 @@ class Monster
     speed = speed_;
     xSpeed = speed;
     ySpeed = 0;
-    size = size_;//monster size is 32x32
+    size = size_;
     xPos = xPos_;
     yPos = yPos_;
     initxPos = xPos_;
@@ -30,11 +30,7 @@ class Monster
   }//end of constructor
   
   void display() {
-    noStroke();
-    rectMode (CORNER);
-    fill(255,0,0,0);
     image(monster_1, xPos, yPos);
-    rect(xPos,yPos,size,size);//monster size is 32x32
     
   }//end display
   
@@ -90,7 +86,7 @@ class Monster
   }//end patrol
   
   void hit (){
-    /*
+    
     for (int i = 0; i < walls.length; i++){
     
       //BEGIN MONSTER/WALL HIT DETECT
@@ -110,7 +106,7 @@ class Monster
         xPos = walls[i].x1 - size;
       }//end left edge
       //END MONSTER/WALL HIT
-      */
+    }
       //BEGIN PLAYER/MONSTER HIT DETECT
       if (player.yPos < yPos+size && player.yPos > yPos+size-player.speed-1 && player.xPos < xPos+size && player.xPos+player.size > xPos){
         player.yPos += speed*5;
