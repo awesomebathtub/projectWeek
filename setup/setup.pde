@@ -1,5 +1,4 @@
 //IMPORT********************
-import ddf.minim.*;
 import gifAnimation.*;
 
 //IMAGE DECLARE*************
@@ -66,15 +65,6 @@ Gif noMoreTomahawks;
 Gif titleScreen;
 
 Gif healthBoostGif;
-//MINIM DECLARE*************
-Minim minim;
-Minim bulletMinim;
-Minim noShootMinim;
-
-//AUDIOPLAYER DECLARE*******
-AudioPlayer music;
-AudioPlayer bulletSound;
-AudioPlayer noShootSound;
 
 //PLAYER DECLARE************
 Player player;
@@ -130,6 +120,7 @@ Weapon mace;
 // 4 = right
 
 void setup(){
+  size(600,600);
   //*************************PLAYER MOVE GIFS*******************
   //MOVESTOP
   playerStop = new Gif(this, "gfx/player/moveStop.gif");
@@ -233,15 +224,7 @@ void setup(){
   
   frameRate(60);
   
-  minim = new Minim(this);
-  bulletMinim = new Minim(this);
-  noShootMinim = new Minim(this);
-  
-  music = minim.loadFile("sfx/opening_theme.mp3");
-  reticle = new Reticle();
-  
   bullets = new ArrayList(0);
-  size(600,600);
   
   player = new Player(300,300,2,30);
   playerLifebar = new Lifebar(player.xPos-50, player.yPos+250, player.xPos+50, player.yPos-250, 100,100);

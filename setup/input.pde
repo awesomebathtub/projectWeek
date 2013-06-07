@@ -99,8 +99,6 @@ void mouseReleased () {
 
   if (player.ammo > 0) {
     bullets.add (new Bullet (10));
-    bulletSound = bulletMinim.loadFile("sfx/tomahawkWoosh.mp3");
-    bulletSound.play();
     player.ammo-=1;
   }
 }//end mouseReleased

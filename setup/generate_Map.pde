@@ -32,7 +32,5 @@ void keyPressed(){
     gameRunning = true;
     playerAlive = true;
     playerLifebar.health = playerLifebar.maxHP;
-    //music.close();
-    minim.stop();
   }//end if
 }//end keyTyped
